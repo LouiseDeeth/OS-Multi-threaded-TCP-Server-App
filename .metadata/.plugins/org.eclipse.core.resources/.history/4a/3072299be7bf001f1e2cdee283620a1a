@@ -77,13 +77,11 @@ public class HealthAndSafetyReportsList {
 		return (location >= 0 && location < list.size()) ? list.get(location).toString() : null;
 	}
 
-	// Retrieve all Accident Reports
 	public synchronized List<HealthAndSafetyReports> retrieveAccidentReports() {
 		return list.stream().filter(report -> report.getType().trim().equalsIgnoreCase("Accident Report"))
 				.collect(Collectors.toList());
 	}
 
-	// Find a report by ID
 	public synchronized Optional<HealthAndSafetyReports> findReportByID(String reportID) {
 		return list.stream().filter(report -> report.getReportID().equalsIgnoreCase(reportID)).findFirst();
 	}
@@ -92,4 +90,5 @@ public class HealthAndSafetyReportsList {
 	public synchronized List<HealthAndSafetyReports> getReportsAssignedToUser(int employeeID) {
 		return list.stream().filter(report -> report.getAssignedTo() == employeeID).collect(Collectors.toList());
 	}
+
 }

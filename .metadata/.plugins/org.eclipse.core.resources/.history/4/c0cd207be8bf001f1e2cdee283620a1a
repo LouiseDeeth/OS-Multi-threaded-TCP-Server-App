@@ -81,7 +81,7 @@ public class ServerThread extends Thread {
 					sendMessage("Goodbye, " + currentUser.getName() + "!");
 					loggedIn = false;
 					break;
-				default: // Invalid choice
+				default:
 					sendMessage("Invalid choice. Please enter 1 to 6.");
 					break;
 				}

@@ -60,7 +60,7 @@ public class Client {
 						System.out.println("Exiting the application.");
 						break;
 
-					default: // Invalid choice
+					default:
 						message = (String) in.readObject();
 						System.out.println(message);
 						break;
@@ -69,16 +69,20 @@ public class Client {
 					// Handle logged-in menu options
 					switch (message) {
 					// Creating a Health and Safety Report
-					case "1": 
+					case "1":
 						createHealthAndSafetyReport();
 						break;
+
 					case "2":
 						retrieveAccidentReports();
 						break;
+
 					case "3":
+						System.out.println("Assigning a Health & Safety Report");
 						assignReport();
 						break;
 					case "4":
+						System.out.println("Viewing all reports assigned to you");
 						viewMyReports();
 						break;
 					case "5":
@@ -89,7 +93,7 @@ public class Client {
 						loggedIn = false;
 						exit = true;
 						break;
-					default: // Invalid choice
+					default:
 						message = (String) in.readObject();
 						System.out.println(message);
 						break;
@@ -248,20 +252,7 @@ public class Client {
 
 	// Menu 2 Option 4. View reports assigned to me
 	private void viewMyReports() throws IOException, ClassNotFoundException {
-		 System.out.println("Retrieving all reports assigned to you...");
 
-		    while (true) {
-		        // Read messages from the server
-		        String response = (String) in.readObject();
-
-		        // Break the loop if the server indicates the end of the report list
-		        if ("END_OF_REPORTS".equals(response)) {
-		            break;
-		        }
-
-		        // Display each report line sent by the server
-		        System.out.println(response);
-		    }
 	}
 
 	// Menu 2 Option 5. Update Password

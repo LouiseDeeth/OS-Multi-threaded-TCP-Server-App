@@ -1,61 +1,60 @@
 import java.io.Serializable;
 
 public class HealthAndSafetyReports implements Serializable {
-    private static final long serialVersionUID = 1L;
-    private String reportID, type, date, employeeID;
-    private int createdBy;
-    private int assignedTo = 0; // default 0 for unassigned
-    private String status = "Open";
+	private static final long serialVersionUID = 1L;
+	private String reportID, type, date, employeeID;
+	private int createdBy;
+	private int assignedTo = 0; // default 0 for unassigned
+	private String status = "Open";
 
-    public HealthAndSafetyReports(String type, String reportID, String date, String employeeID, int createdBy) {
-        this.type = type;
-        this.reportID = reportID;
-        this.date = date;
-        this.employeeID = employeeID;
-        this.createdBy = createdBy;
-    }
+	public HealthAndSafetyReports(String type, String reportID, String date, String employeeID, int createdBy) {
+		this.type = type;
+		this.reportID = reportID;
+		this.date = date;
+		this.employeeID = employeeID;
+		this.createdBy = createdBy;
+	}
 
-    // Getters and Setters
-    public String getReportID() {
-        return reportID;
-    }
+	// Getters and Setters
+	public String getReportID() {
+		return reportID;
+	}
 
-    public String getType() {
-        return type;
-    }
+	public String getType() {
+		return type;
+	}
 
-    public String getDate() {
-        return date;
-    }
+	public String getDate() {
+		return date;
+	}
 
-    public int getCreatedBy() {
-        return createdBy;
-    }
+	public int getCreatedBy() {
+		return createdBy;
+	}
 
-    public int getAssignedTo() {
-        return assignedTo;
-    }
+	public int getAssignedTo() {
+		return assignedTo;
+	}
 
-    public void setAssignedTo(int assignedTo) {
-        this.assignedTo = assignedTo;
-    }
+	public void setAssignedTo(int assignedTo) {
+		this.assignedTo = assignedTo;
+	}
 
-    public String getStatus() {
-        return status;
-    }
+	public String getStatus() {
+		return status;
+	}
 
-    public void setStatus(String status) {
-        this.status = status;
-    }
-    
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
 	public CharSequence getEmployeeID() {
 		return employeeID;
 	}
 
-    @Override
-    public String toString() {
-        return "Type: " + type + ", Report ID: " + reportID + ", Date: " + date + 
-               ", Created By: " + createdBy + ", Status: " + status +
-               (assignedTo == 0 ? ", Unassigned" : ", Assigned To: " + assignedTo);
-    }
+	@Override
+	public String toString() {
+		return "Type: " + type + ", Report ID: " + reportID + ", Date: " + date + ", Created By: " + createdBy
+				+ ", Status: " + status + (assignedTo == 0 ? ", Unassigned" : ", Assigned To: " + assignedTo);
+	}
 }

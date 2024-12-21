@@ -35,9 +35,9 @@ public class ServerThread extends Thread {
 
 				switch (choice) {
 				case "1": // Login
-					currentUser = handleLogin(); // Assign the logged-in user
-					loggedIn = true;
-					break;
+				    currentUser = handleLogin(); // Assign the logged-in user
+				    loggedIn = true;
+				    break;
 
 				case "2": // Register
 					handleRegistration();
@@ -81,7 +81,7 @@ public class ServerThread extends Thread {
 					sendMessage("Goodbye, " + currentUser.getName() + "!");
 					loggedIn = false;
 					break;
-				default: // Invalid choice
+				default:
 					sendMessage("Invalid choice. Please enter 1 to 6.");
 					break;
 				}
@@ -169,162 +169,158 @@ public class ServerThread extends Thread {
 	}
 
 	public class RandomNumberGenerator {
-		public static String generate8DigitNumber() {
-			Random random = new Random();
-			int randomNumber = 10000000 + random.nextInt(90000000); // Generate number in range 10,000,000 to 99,999,999
-			return String.valueOf(randomNumber);
-		}
+	    public static String generate8DigitNumber() {
+	        Random random = new Random();
+	        int randomNumber = 10000000 + random.nextInt(90000000); // Generate number in range 10,000,000 to 99,999,999
+	        return String.valueOf(randomNumber);
+	    }
 	}
-
+	
 	// Menu 2 Option 1. Create a health and safety report
 	private void createHealthAndSafetyReport(User currentUser) throws IOException, ClassNotFoundException {
-		if (currentUser == null) {
-			sendMessage("Error: You must be logged in to create a report.");
-			return;
-		}
+	    if (currentUser == null) {
+	        sendMessage("Error: You must be logged in to create a report.");
+	        return;
+	    }
 
-		// Get report type
-		sendMessage("\nChoose an option:\n1: Create New Accident Report\n2: Create New Health & Safety Risk Report");
-		String reportTypeChoice = (String) in.readObject();
-		String type = reportTypeChoice.equals("1") ? "Accident Report" : "Health & Safety Risk Report";
+	    // Get report type
+	    sendMessage("\nChoose an option:\n1: Create New Accident Report\n2: Create New Health & Safety Risk Report");
+	    String reportTypeChoice = (String) in.readObject();
+	    String type = reportTypeChoice.equals("1") ? "Accident Report" : "Health & Safety Risk Report";
 
-		// Get report date
-		sendMessage("Enter Report Date (YYYY-MM-DD):");
-		String date = (String) in.readObject();
+	    // Get report date
+	    sendMessage("Enter Report Date (YYYY-MM-DD):");
+	    String date = (String) in.readObject();
 
-		// Generate unique report ID
-		String reportID = RandomNumberGenerator.generate8DigitNumber();
+	    // Generate unique report ID
+	    String reportID = RandomNumberGenerator.generate8DigitNumber();
 
-		// Employee ID of report creator
-		int createdBy = currentUser.getEmployeeID();
+	    // Employee ID of report creator
+	    int createdBy = currentUser.getEmployeeID();
 
-		// Default values
-		String status = "Open";
-		int assignedTo = 0; // Unassigned initially
+	    // Default values
+	    String status = "Open";
+	    int assignedTo = 0; // Unassigned initially
 
-		// Create a new report
-		HealthAndSafetyReports newReport = new HealthAndSafetyReports(type, reportID, date, String.valueOf(createdBy),
-				createdBy);
-		newReport.setStatus(status);
-		newReport.setAssignedTo(assignedTo);
+	    // Create a new report
+	    HealthAndSafetyReports newReport = new HealthAndSafetyReports(type, reportID, date, String.valueOf(createdBy), createdBy);
+	    newReport.setStatus(status);
+	    newReport.setAssignedTo(assignedTo);
 
-		synchronized (reports) {
-			reports.add(newReport);
-		}
+	    synchronized (reports) {
+	        reports.add(newReport);
+	    }
 
-		HealthAndSafetyReportsList reportList = new HealthAndSafetyReportsList();
-		reportList.addReport(type, reportID, date, String.valueOf(createdBy), createdBy);
+	    HealthAndSafetyReportsList reportList = new HealthAndSafetyReportsList();
+	    reportList.addReport(type, reportID, date, String.valueOf(createdBy), createdBy);
 
-		sendMessage("Report created successfully!");
-		sendMessage("Report Details: " + newReport);
+	    sendMessage("Report created successfully!");
+	    sendMessage("Report Details: " + newReport);
 	}
-
+	
 	// Menu 2 Option 2. Retrieve all accident reports
 	private void retrieveAccidentReports() throws IOException {
-		HealthAndSafetyReportsList reportList = new HealthAndSafetyReportsList();
-		List<HealthAndSafetyReports> accidentReports = reportList.retrieveAccidentReports();
+	    HealthAndSafetyReportsList reportList = new HealthAndSafetyReportsList();
+	    List<HealthAndSafetyReports> accidentReports = reportList.retrieveAccidentReports();
 
-		if (accidentReports.isEmpty()) {
-			sendMessage("No accident reports found.");
-		} else {
-			sendMessage("Accident Reports:");
-			for (HealthAndSafetyReports report : accidentReports) {
-				sendMessage(report.toString());
-			}
-		}
-		sendMessage("END_OF_REPORTS");
+	    if (accidentReports.isEmpty()) {
+	        sendMessage("No accident reports found.");
+	    } else {
+	        sendMessage("Accident Reports:");
+	        for (HealthAndSafetyReports report : accidentReports) {
+	            sendMessage(report.toString());
+	        }
+	    }
+	    sendMessage("END_OF_REPORTS");
 	}
 
 	// Menu 2 Option 3: Assign a health & safety report
 	private void assignReport() throws IOException, ClassNotFoundException {
-		HealthAndSafetyReportsList reportList = new HealthAndSafetyReportsList();
+	    HealthAndSafetyReportsList reportList = new HealthAndSafetyReportsList();
 
-		// Prompt for Report ID
-		sendMessage("Enter the Report ID of the report you want to assign:");
-		String reportId = (String) in.readObject();
+	    // Prompt for Report ID
+	    sendMessage("Enter the Report ID of the report you want to assign:");
+	    String reportId = (String) in.readObject();
 
-		// Find the report by ID
-		Optional<HealthAndSafetyReports> reportOptional = reportList.findReportByID(reportId);
-		if (reportOptional.isEmpty()) {
-			sendMessage("Error: Report ID not found.");
-			return;
-		}
+	    // Find the report by ID
+	    Optional<HealthAndSafetyReports> reportOptional = reportList.findReportByID(reportId);
+	    if (reportOptional.isEmpty()) {
+	        sendMessage("Error: Report ID not found.");
+	        return;
+	    }
 
-		// Ask for Employee ID
-		sendMessage("Enter the Employee ID to assign this report:");
-		String employeeIdInput = (String) in.readObject();
-		int employeeId;
-		try {
-			employeeId = Integer.parseInt(employeeIdInput);
-		} catch (NumberFormatException e) {
-			sendMessage("Error: Invalid Employee ID. It must be a number.");
-			return;
-		}
+	    // Ask for Employee ID
+	    sendMessage("Enter the Employee ID to assign this report:");
+	    String employeeIdInput = (String) in.readObject();
+	    int employeeId;
+	    try {
+	        employeeId = Integer.parseInt(employeeIdInput);
+	    } catch (NumberFormatException e) {
+	        sendMessage("Error: Invalid Employee ID. It must be a number.");
+	        return;
+	    }
 
-		// Update the report
-		HealthAndSafetyReports report = reportOptional.get();
-		report.setAssignedTo(employeeId);
-		report.setStatus("Assigned");
+	    // Update the report
+	    HealthAndSafetyReports report = reportOptional.get();
+	    report.setAssignedTo(employeeId);
+	    report.setStatus("Assigned");
 
-		// Save the updated report back to the list and file
-		reportList.saveReportsToFile();
-		sendMessage("Report successfully assigned to Employee ID: " + employeeId);
+	    // Save the updated report back to the list and file
+	    reportList.saveReportsToFile();
+	    sendMessage("Report successfully assigned to Employee ID: " + employeeId);
 	}
+
 
 	// Menu 2 Option 4. View reports assigned to me
 	private void viewMyReports(User currentUser) throws IOException {
-		if (currentUser == null) {
-			sendMessage("Error: You must be logged in to view assigned reports.");
-			return;
-		}
-
-		HealthAndSafetyReportsList reportList = new HealthAndSafetyReportsList();
-		List<HealthAndSafetyReports> assignedReports = reportList.getReportsAssignedToUser(currentUser.getEmployeeID());
-
-		if (assignedReports.isEmpty()) {
-			sendMessage("No reports assigned to you.");
-		} else {
-			sendMessage("Reports assigned to you:");
-			for (HealthAndSafetyReports report : assignedReports) {
-				sendMessage(report.toString());
+		sendMessage("List of Reports assigned to you:");
+		synchronized (reports) {
+			boolean hasReports = false;
+			for (HealthAndSafetyReports report : reports) {
+				if (report.getAssignedTo() == currentUser.getEmployeeID()) {
+					sendMessage(report.toString());
+					hasReports = true;
+				}
+			}
+			if (!hasReports) {
+				sendMessage("No reports assigned to you.");
 			}
 		}
-		sendMessage("END_OF_REPORTS");
 	}
 
 	// Menu 2 Option 5. Update Password
 	private synchronized boolean updatePassword(User currentUser) throws IOException, ClassNotFoundException {
-		if (currentUser == null) {
-			sendMessage("Error: No user is currently logged in. Please log in again.");
-			return false;
-		}
+	    if (currentUser == null) {
+	        sendMessage("Error: No user is currently logged in. Please log in again.");
+	        return false;
+	    }
 
-		UserList userList = new UserList();
+	    UserList userList = new UserList();
 
-		// Request current password
-		sendMessage("Enter your current password:");
-		String currentPassword = (String) in.readObject();
+	    // Request current password
+	    sendMessage("Enter your current password:");
+	    String currentPassword = (String) in.readObject();
 
-		// Verify the current password
-		if (!currentPassword.equals(currentUser.getPassword())) {
-			sendMessage("Incorrect current password. Please try again.");
-			return false;
-		}
+	    // Verify the current password
+	    if (!currentPassword.equals(currentUser.getPassword())) {
+	        sendMessage("Incorrect current password. Please try again.");
+	        return false;
+	    }
 
-		// Request the new password
-		sendMessage("Enter your new password:");
-		String newPassword = (String) in.readObject();
+	    // Request the new password
+	    sendMessage("Enter your new password:");
+	    String newPassword = (String) in.readObject();
 
-		// Update the password
-		currentUser.setPassword(newPassword);
+	    // Update the password
+	    currentUser.setPassword(newPassword);
 
-		// Persist the updated password in UserList
-		synchronized (userList) {
-			userList.updateUserPassword(currentUser);
-		}
+	    // Persist the updated password in UserList
+	    synchronized (userList) {
+	        userList.updateUserPassword(currentUser);
+	    }
 
-		sendMessage("Password updated successfully!");
-		return true;
+	    sendMessage("Password updated successfully!");
+	    return true;
 	}
 
 	private void sendMessage(String msg) {
