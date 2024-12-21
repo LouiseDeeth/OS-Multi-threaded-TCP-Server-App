@@ -1,0 +1,169 @@
+import java.io.*;
+import java.net.*;
+import java.util.*;
+
+public class Client {
+	Socket requestSocket;
+	ObjectOutputStream out;
+	ObjectInputStream in;
+	String message;
+	int result;
+	Scanner input;
+
+	Client() {
+		input = new Scanner(System.in);
+	}
+
+	void run() {
+		try {
+			// Creating a socket to connect to the server
+			requestSocket = new Socket("127.0.0.1", 2004);
+			System.out.println("Connected to localhost in port 2004");
+
+			// Setup Input and Output streams
+			out = new ObjectOutputStream(requestSocket.getOutputStream());
+			out.flush();
+			in = new ObjectInputStream(requestSocket.getInputStream());
+
+			boolean exit = false;
+			do {
+				// Display menu and handle user choice
+				message = (String) in.readObject();
+			
+				System.out.println(message);
+
+				message = input.nextLine();
+				sendMessage(message);
+
+				if ("1".equals(message)) {
+					// Login
+					handleLogin();
+				} else if ("2".equals(message)) {
+					// Register
+					handleRegistration();
+				} else if ("-1".equals(message)) {
+					exit = true;
+					System.out.println("Exiting the application.");
+				} else {
+					message = input.nextLine();
+					sendMessage(message);
+				}
+			} while (!exit);
+
+		} catch (IOException ioException) {
+			ioException.printStackTrace();
+		} catch (ClassNotFoundException classNotFound) {
+			System.err.println("Data received in unknown format");
+		}finally {
+			closeConnection();
+		}
+	}
+
+	void sendMessage(String msg) {
+		try {
+			out.writeObject(msg); // send the message to the server
+			out.flush();
+			//System.out.println("client: " + msg); // debugging
+		} catch (IOException ioException) {
+			ioException.printStackTrace();
+		}
+	}
+
+	private void handleLogin() throws IOException, ClassNotFoundException {
+		do {
+			// Email
+			message = (String) in.readObject();
+			System.out.println(message);
+			message = input.nextLine();
+			sendMessage(message);
+
+			// Password
+			message = (String) in.readObject();
+			System.out.println(message);
+			message = input.nextLine();
+			sendMessage(message);
+
+			//Check login results
+			message = (String) in.readObject();
+			System.out.println(message);
+            if (!message.startsWith("Login successful")) {
+                System.out.println("Please try logging in again.\n");
+            }
+            
+			message = (String)in.readObject();
+			System.out.println(message);
+			message = (String)in.readObject();
+			System.out.println(message);
+			message = (String)in.readObject();
+			System.out.println(message);
+			message = (String)in.readObject();
+			System.out.println(message);
+			message = (String)in.readObject();
+			System.out.println(message);
+			message = (String)in.readObject();
+			System.out.println(message);
+			message = (String)in.readObject();
+			System.out.println(message);
+		} while (!message.startsWith("Login successful")); // Repeat until login is successful
+	}
+
+	private void handleRegistration() throws IOException, ClassNotFoundException {
+			 // Name
+	    	message = (String)in.readObject();
+			System.out.println(message);
+			message = input.nextLine();
+			sendMessage(message);
+			
+			// Employee ID no
+			message = (String)in.readObject();
+			System.out.println(message);
+			message = input.nextLine();
+			sendMessage(message);
+			
+			// Email
+	    	message = (String)in.readObject();
+			System.out.println(message);
+			message = input.nextLine();
+			sendMessage(message);
+			
+			// Password
+			message = (String)in.readObject();
+			System.out.println(message);
+			message = input.nextLine();
+			sendMessage(message);
+			
+			// Department Name
+	    	message = (String)in.readObject();
+			System.out.println(message);
+			message = input.nextLine();
+			sendMessage(message);
+			
+			// Role
+			message = (String)in.readObject();
+			System.out.println(message);
+			message = input.nextLine();
+			sendMessage(message);
+			
+			message = (String)in.readObject();
+			System.out.println(message);
+	}
+
+	private void closeConnection() {
+		// 4: Closing connection
+		try {
+			if (in != null)
+				in.close();
+			if (out != null)
+				out.close();
+			if (requestSocket != null)
+				requestSocket.close();
+		} catch (IOException ioException) {
+			ioException.printStackTrace();
+		}
+	}
+
+	public static void main(String args[]) {
+		Client client = new Client();
+		client.run();
+	}
+}

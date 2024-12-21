@@ -1,0 +1,65 @@
+import java.io.*;
+import java.util.*;
+
+public class UserList {
+    
+    public UserList() {
+    	private final List<User> list = new ArrayList<>();
+        loadUsersFromFile();
+    }
+
+    private void loadUsersFromFile() {
+        try (BufferedReader br = new BufferedReader(new FileReader("UserList.txt"))) {
+            String fileContents;
+            while ((fileContents = br.readLine()) != null) {
+                String[] parts = fileContents.split("|"); // Using | as delimiter based on User.toString()
+                if (parts.length == 6) {
+                    String name = parts[0];
+                    int employeeID = Integer.parseInt(parts[1]);
+                    String email = parts[2];
+                    String password = parts[3];
+                    String departmentName = parts[4];
+                    String role = parts[5];
+                    list.add(new User(name, employeeID, email, password, departmentName, role));
+                }
+            }
+        } catch (FileNotFoundException e) {
+            System.out.println("User list file not found. A new one will be created.");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public synchronized void addUser(User newUser) {
+        list.add(newUser);
+        saveUsersToFile();
+    }
+
+    private void saveUsersToFile() {
+        try (FileWriter fw = new FileWriter("UserList.txt", true); // Enable append mode
+             BufferedWriter bw = new BufferedWriter(fw)) {        // Use BufferedWriter for efficient appending
+            // Append only the last user added to avoid duplicating existing users
+            if (!list.isEmpty()) {
+                User lastUser = list.get(list.size() - 1); // Get the last user added
+                bw.write(lastUser.toString());
+                bw.newLine(); // Add a newline after each user
+            }
+            System.out.println("User list updated successfully.");
+        } catch (IOException e) {
+            System.err.println("Error writing to user list file.");
+            e.printStackTrace();
+        }
+    }
+
+    public synchronized Optional<User> findUserByEmailAndPassword(String email, String password) {
+        return list.stream()
+                .filter(user -> user.getEmail().equals(email) && user.getPassword().equals(password))
+                .findFirst();
+    }
+
+    public synchronized boolean isEmailOrEmployeeIDExists(String email, int employeeID) {
+        return list.stream()
+                .anyMatch(user -> user.getEmail().equals(email) || user.getEmployeeID() == employeeID);
+    }
+
+}

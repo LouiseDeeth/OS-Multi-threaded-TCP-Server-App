@@ -1,0 +1,82 @@
+import java.io.*;
+import java.util.*;
+
+
+public class HealthAndSafetyReportsList {
+    private final List<HealthAndSafetyReports> list;
+
+    public HealthAndSafetyReportsList() {
+        list = Collections.synchronizedList(new LinkedList<>());
+        loadReportsFromFile();
+    }
+
+    private void loadReportsFromFile() {
+        try (BufferedReader br = new BufferedReader(new FileReader("HealthAndSafetyReports.txt"))) {
+            String fileContents;
+            while ((fileContents = br.readLine()) != null) {
+                String[] parts = fileContents.split("@"); // Assuming @ is used as delimiter
+                if (parts.length == 5) {
+                    String type = parts[0];
+                    String date = parts[1];
+                    String reportID = parts[2];
+                    String employeeID = parts[3];
+                    int createdBy = Integer.parseInt(parts[4]);
+                    list.add(new HealthAndSafetyReports(type, date, reportID, employeeID, createdBy));
+                }
+            }
+        } catch (FileNotFoundException e) {
+            System.out.println("HealthAndSafetyReports file not found. A new one will be created.");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public synchronized void addReport(String type, String date, String reportID, String employeeID, int createdBy) {
+        HealthAndSafetyReports newReport = new HealthAndSafetyReports(type, date, reportID, employeeID, createdBy);
+        list.add(newReport);
+        saveReportsToFile();
+    }
+
+    private void saveReportsToFile() {
+        try (FileWriter fw = new FileWriter("HealthAndSafetyReports.txt")) {
+            for (HealthAndSafetyReports report : list) {
+                fw.write(report.toString() + "\n");
+            }
+            System.out.println("Reports file updated successfully.");
+        } catch (IOException e) {
+            System.err.println("Error writing to reports file.");
+            e.printStackTrace();
+        }
+    }
+
+    public synchronized int getLength() {
+        return list.size();
+    }
+
+    public synchronized String getItem(int location) {
+        if (location < 0 || location >= list.size()) {
+            return null; // Return null for invalid index
+        }
+        return list.get(location).toString();
+    }
+
+    public synchronized Optional<HealthAndSafetyReports> findReportByID(String reportID) {
+        return list.stream().filter(report -> report.getReportID().equalsIgnoreCase(reportID)).findFirst();
+    }
+
+    public synchronized List<HealthAndSafetyReports> getReportsByType(String type) {
+        synchronized (list) {
+            return list.stream().filter(report -> report.getType().equalsIgnoreCase(type)).collect(Collectors.toList());
+        }
+    }
+
+    public synchronized List<HealthAndSafetyReports> getAssignedReports(int employeeID) {
+        List<HealthAndSafetyReports> assignedReports = new ArrayList<>();
+        for (HealthAndSafetyReports report : list) {
+            if (report.getAssignedTo() == employeeID) {
+                assignedReports.add(report);
+            }
+        }
+        return assignedReports;
+    }
+}

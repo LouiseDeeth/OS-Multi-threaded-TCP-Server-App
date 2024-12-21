@@ -1,0 +1,63 @@
+import java.io.*;
+import java.util.*;
+
+public class UserList {
+    private final List<User> list;
+
+    public UserList() {
+        list = new ArrayList<>();
+        loadUsersFromFile();
+    }
+
+    private void loadUsersFromFile() {
+        try (BufferedReader br = new BufferedReader(new FileReader("UserList.txt"))) {
+            String fileContents;
+            while ((fileContents = br.readLine()) != null) {
+                String[] parts = fileContents.split("@"); // Using @ as delimiter based on User.toString()
+                if (parts.length == 6) {
+                    String name = parts[0];
+                    int employeeID = Integer.parseInt(parts[1]);
+                    String email = parts[2];
+                    String password = parts[3];
+                    String departmentName = parts[4];
+                    String role = parts[5];
+                    list.add(new User(name, employeeID, email, password, departmentName, role));
+                }
+            }
+        } catch (FileNotFoundException e) {
+            System.out.println("User list file not found. A new one will be created.");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public synchronized void addUser(User newUser) {
+        list.add(newUser);
+        saveUsersToFile();
+        loadUsersFromFile(); // Reload the list from the file to ensure consistency
+    }
+
+    private void saveUsersToFile() {
+        try (FileWriter fw = new FileWriter("UserList.txt")) {
+            for (User user : list) {
+                fw.write(user.toString() + "\n");
+            }
+            System.out.println("User list updated successfully.");
+        } catch (IOException e) {
+            System.err.println("Error writing to user list file.");
+            e.printStackTrace();
+        }
+    }
+
+    public synchronized Optional<User> findUserByEmailAndPassword(String email, String password) {
+        return list.stream()
+                .filter(user -> user.getEmail().equals(email) && user.getPassword().equals(password))
+                .findFirst();
+    }
+
+    public synchronized boolean isEmailOrEmployeeIDExists(String email, int employeeID) {
+        return list.stream()
+                .anyMatch(user -> user.getEmail().equals(email) || user.getEmployeeID() == employeeID);
+    }
+
+}

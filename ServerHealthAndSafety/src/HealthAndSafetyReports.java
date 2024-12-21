@@ -1,0 +1,57 @@
+import java.io.Serializable;
+
+public class HealthAndSafetyReports implements Serializable {
+    private static final long serialVersionUID = 1L;
+    private String reportID, type, date, employeeID;
+    private int createdBy;
+    private int assignedTo = 0; // Employee ID to whom the report is assigned (default 0 for unassigned)
+    private String status = "Open";
+
+    public HealthAndSafetyReports(String type, String date, String reportID, String employeeID, int createdBy) {
+        this.type = type;
+        this.date = date;
+        this.reportID = reportID;
+        this.employeeID = employeeID;
+        this.createdBy = createdBy;
+    }
+
+    // Getters and Setters
+    public String getReportID() {
+        return reportID;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public int getCreatedBy() {
+        return createdBy;
+    }
+
+    public int getAssignedTo() {
+        return assignedTo;
+    }
+
+    public void setAssignedTo(int assignedTo) {
+        this.assignedTo = assignedTo;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    @Override
+    public String toString() {
+        return "Type: " + type + ", Date: " + date + ", Report ID: " + reportID +
+               ", Created By: " + createdBy + ", Status: " + status +
+               (assignedTo == 0 ? ", Unassigned" : ", Assigned To: " + assignedTo);
+    }
+}

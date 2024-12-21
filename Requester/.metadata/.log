@@ -1,0 +1,589 @@
+!SESSION 2024-11-26 12:11:05.037 -----------------------------------------------
+eclipse.buildId=4.31.0.20240307-1200
+java.version=20.0.1
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IE
+Framework arguments:  -product org.eclipse.epp.package.java.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.java.product -data C:\Users\louis\OneDrive - Atlantic TU\Operating System Project\Requester
+
+!ENTRY ch.qos.logback.classic 1 0 2024-11-26 12:11:07.940
+!MESSAGE Activated before the state location was initialized. Retry after the state location is initialized.
+
+!ENTRY ch.qos.logback.classic 1 0 2024-11-26 12:11:09.071
+!MESSAGE Logback config file: C:\Users\louis\OneDrive - Atlantic TU\Operating System Project\Requester\.metadata\.plugins\org.eclipse.m2e.logback\logback.2.6.0.20240217-1525.xml
+
+!ENTRY org.eclipse.egit.ui 2 0 2024-11-26 12:11:15.090
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\louis'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.equinox.p2.director 2 10054 2024-11-26 12:11:31.854
+!MESSAGE Cannot complete the install because of a conflicting dependency.
+!SUBENTRY 1 org.eclipse.equinox.p2.director 4 0 2024-11-26 12:11:31.854
+!MESSAGE Software being installed: artificial_root 1.0.0.v1732623089841
+!SUBENTRY 1 org.eclipse.equinox.p2.director 4 1 2024-11-26 12:11:31.854
+!MESSAGE Only one of the following can be installed at once: 
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2024-11-26 12:11:31.854
+!MESSAGE Mylyn WikiText Help UI 3.0.48.202308291007 (org.eclipse.mylyn.wikitext.help.ui 3.0.48.202308291007)
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2024-11-26 12:11:31.854
+!MESSAGE Mylyn WikiText Help UI 4.2.0.v20240130-0811 (org.eclipse.mylyn.wikitext.help.ui 4.2.0.v20240130-0811)
+!SUBENTRY 1 org.eclipse.equinox.p2.director 4 1 2024-11-26 12:11:31.854
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2024-11-26 12:11:31.854
+!MESSAGE From: artificial_root 1.0.0.v1732623089841
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2024-11-26 12:11:31.854
+!MESSAGE To: org.eclipse.equinox.p2.iu; org.eclipse.mylyn.wikitext.feature.feature.group 4.2.0.v20240302-0923
+!SUBENTRY 1 org.eclipse.equinox.p2.director 4 1 2024-11-26 12:11:31.854
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2024-11-26 12:11:31.854
+!MESSAGE From: artificial_root 1.0.0.v1732623089841
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2024-11-26 12:11:31.854
+!MESSAGE To: org.eclipse.equinox.p2.iu; org.eclipse.mylyn.wikitext_feature.feature.group 0.0.0
+!SUBENTRY 1 org.eclipse.equinox.p2.director 4 1 2024-11-26 12:11:31.854
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2024-11-26 12:11:31.854
+!MESSAGE From: Mylyn WikiText Editors 3.0.48.202308291007 (org.eclipse.mylyn.wikitext.editors_feature.feature.group 3.0.48.202308291007)
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2024-11-26 12:11:31.854
+!MESSAGE To: org.eclipse.equinox.p2.iu; org.eclipse.mylyn.wikitext.help.ui [3.0.48.202308291007,3.0.48.202308291007]
+!SUBENTRY 1 org.eclipse.equinox.p2.director 4 1 2024-11-26 12:11:31.854
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2024-11-26 12:11:31.854
+!MESSAGE From: Mylyn WikiText 4.2.0.v20240302-0923 (org.eclipse.mylyn.wikitext.feature.feature.group 4.2.0.v20240302-0923)
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2024-11-26 12:11:31.854
+!MESSAGE To: org.eclipse.equinox.p2.iu; org.eclipse.mylyn.wikitext.help.ui [4.2.0.v20240130-0811,4.2.0.v20240130-0811]
+!SUBENTRY 1 org.eclipse.equinox.p2.director 4 1 2024-11-26 12:11:31.854
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2024-11-26 12:11:31.854
+!MESSAGE From: Mylyn WikiText 3.0.48.202308291007 (org.eclipse.mylyn.wikitext_feature.feature.group 3.0.48.202308291007)
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2024-11-26 12:11:31.854
+!MESSAGE To: org.eclipse.equinox.p2.iu; org.eclipse.mylyn.wikitext.editors_feature.feature.group [3.0.48.202308291007,3.0.48.202308291007]
+
+!ENTRY org.eclipse.oomph.setup.ui 1 0 2024-11-26 12:11:31.861
+!MESSAGE Setup tasks were performed during startup. See 'C:\Users\louis\eclipse\java-2023-09\eclipse\configuration\org.eclipse.oomph.setup\setup.log' for details
+
+!ENTRY org.eclipse.ui 4 0 2024-11-26 22:12:45.536
+!MESSAGE Unhandled event loop exception
+!STACK 0
+java.lang.NullPointerException: Cannot invoke "org.eclipse.jdt.internal.compiler.lookup.TypeBinding.signableName()" because "binding.type" is null
+	at org.eclipse.jdt.internal.core.SelectionRequestor.acceptLocalVariable(SelectionRequestor.java:440)
+	at org.eclipse.jdt.internal.codeassist.SelectionEngine.selectFrom(SelectionEngine.java:1417)
+	at org.eclipse.jdt.internal.codeassist.SelectionEngine.select(SelectionEngine.java:1101)
+	at org.eclipse.jdt.internal.core.Openable.codeSelect(Openable.java:166)
+	at org.eclipse.jdt.internal.core.CompilationUnit.codeSelect(CompilationUnit.java:382)
+	at org.eclipse.jdt.internal.core.CompilationUnit.codeSelect(CompilationUnit.java:375)
+	at org.eclipse.jdt.internal.ui.javaeditor.JavaElementHyperlinkDetector.detectHyperlinksCached(JavaElementHyperlinkDetector.java:129)
+	at org.eclipse.jdt.internal.ui.javaeditor.JavaElementHyperlinkDetector.lambda$0(JavaElementHyperlinkDetector.java:85)
+	at org.eclipse.jdt.internal.core.JavaModelManager.cacheZipFiles(JavaModelManager.java:5839)
+	at org.eclipse.jdt.internal.core.JavaModelManager.callReadOnly(JavaModelManager.java:5828)
+	at org.eclipse.jdt.core.JavaCore.callReadOnly(JavaCore.java:6126)
+	at org.eclipse.jdt.internal.ui.javaeditor.JavaElementHyperlinkDetector.detectHyperlinks(JavaElementHyperlinkDetector.java:85)
+	at org.eclipse.ui.texteditor.HyperlinkDetectorRegistry$HyperlinkDetectorDelegate.detectHyperlinks(HyperlinkDetectorRegistry.java:81)
+	at org.eclipse.jface.text.hyperlink.HyperlinkManager.findHyperlinks(HyperlinkManager.java:289)
+	at org.eclipse.jface.text.hyperlink.HyperlinkManager.findHyperlinks(HyperlinkManager.java:262)
+	at org.eclipse.jface.text.hyperlink.HyperlinkManager.mouseMove(HyperlinkManager.java:457)
+	at org.eclipse.swt.widgets.TypedListener.handleEvent(TypedListener.java:216)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:89)
+	at org.eclipse.swt.widgets.Display.sendEvent(Display.java:4274)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1066)
+	at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:4072)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3660)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$5.run(PartRenderingEngine.java:1151)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:339)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1042)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:152)
+	at org.eclipse.ui.internal.Workbench.lambda$3(Workbench.java:639)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:339)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:546)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:173)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:152)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:208)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:143)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:109)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:439)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:271)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:651)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:588)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1459)
+	at org.eclipse.equinox.launcher.Main.main(Main.java:1432)
+
+!ENTRY org.eclipse.ui 4 0 2024-11-26 22:12:45.547
+!MESSAGE Unhandled event loop exception
+!STACK 0
+java.lang.NullPointerException: Cannot invoke "org.eclipse.jdt.internal.compiler.lookup.TypeBinding.signableName()" because "binding.type" is null
+	at org.eclipse.jdt.internal.core.SelectionRequestor.acceptLocalVariable(SelectionRequestor.java:440)
+	at org.eclipse.jdt.internal.codeassist.SelectionEngine.selectFrom(SelectionEngine.java:1417)
+	at org.eclipse.jdt.internal.codeassist.SelectionEngine.select(SelectionEngine.java:1101)
+	at org.eclipse.jdt.internal.core.Openable.codeSelect(Openable.java:166)
+	at org.eclipse.jdt.internal.core.CompilationUnit.codeSelect(CompilationUnit.java:382)
+	at org.eclipse.jdt.internal.core.CompilationUnit.codeSelect(CompilationUnit.java:375)
+	at org.eclipse.jdt.internal.ui.javaeditor.JavaElementHyperlinkDetector.detectHyperlinksCached(JavaElementHyperlinkDetector.java:129)
+	at org.eclipse.jdt.internal.ui.javaeditor.JavaElementHyperlinkDetector.lambda$0(JavaElementHyperlinkDetector.java:85)
+	at org.eclipse.jdt.internal.core.JavaModelManager.cacheZipFiles(JavaModelManager.java:5839)
+	at org.eclipse.jdt.internal.core.JavaModelManager.callReadOnly(JavaModelManager.java:5828)
+	at org.eclipse.jdt.core.JavaCore.callReadOnly(JavaCore.java:6126)
+	at org.eclipse.jdt.internal.ui.javaeditor.JavaElementHyperlinkDetector.detectHyperlinks(JavaElementHyperlinkDetector.java:85)
+	at org.eclipse.ui.texteditor.HyperlinkDetectorRegistry$HyperlinkDetectorDelegate.detectHyperlinks(HyperlinkDetectorRegistry.java:81)
+	at org.eclipse.jface.text.hyperlink.HyperlinkManager.findHyperlinks(HyperlinkManager.java:289)
+	at org.eclipse.jface.text.hyperlink.HyperlinkManager.findHyperlinks(HyperlinkManager.java:262)
+	at org.eclipse.jface.text.hyperlink.HyperlinkManager.mouseMove(HyperlinkManager.java:457)
+	at org.eclipse.swt.widgets.TypedListener.handleEvent(TypedListener.java:216)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:89)
+	at org.eclipse.swt.widgets.Display.sendEvent(Display.java:4274)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1066)
+	at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:4072)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3660)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$5.run(PartRenderingEngine.java:1151)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:339)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1042)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:152)
+	at org.eclipse.ui.internal.Workbench.lambda$3(Workbench.java:639)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:339)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:546)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:173)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:152)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:208)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:143)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:109)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:439)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:271)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:651)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:588)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1459)
+	at org.eclipse.equinox.launcher.Main.main(Main.java:1432)
+
+!ENTRY org.eclipse.ui 4 0 2024-11-26 22:12:45.555
+!MESSAGE Unhandled event loop exception
+!STACK 0
+java.lang.NullPointerException: Cannot invoke "org.eclipse.jdt.internal.compiler.lookup.TypeBinding.signableName()" because "binding.type" is null
+	at org.eclipse.jdt.internal.core.SelectionRequestor.acceptLocalVariable(SelectionRequestor.java:440)
+	at org.eclipse.jdt.internal.codeassist.SelectionEngine.selectFrom(SelectionEngine.java:1417)
+	at org.eclipse.jdt.internal.codeassist.SelectionEngine.select(SelectionEngine.java:1101)
+	at org.eclipse.jdt.internal.core.Openable.codeSelect(Openable.java:166)
+	at org.eclipse.jdt.internal.core.CompilationUnit.codeSelect(CompilationUnit.java:382)
+	at org.eclipse.jdt.internal.core.CompilationUnit.codeSelect(CompilationUnit.java:375)
+	at org.eclipse.jdt.internal.ui.javaeditor.JavaElementHyperlinkDetector.detectHyperlinksCached(JavaElementHyperlinkDetector.java:129)
+	at org.eclipse.jdt.internal.ui.javaeditor.JavaElementHyperlinkDetector.lambda$0(JavaElementHyperlinkDetector.java:85)
+	at org.eclipse.jdt.internal.core.JavaModelManager.cacheZipFiles(JavaModelManager.java:5839)
+	at org.eclipse.jdt.internal.core.JavaModelManager.callReadOnly(JavaModelManager.java:5828)
+	at org.eclipse.jdt.core.JavaCore.callReadOnly(JavaCore.java:6126)
+	at org.eclipse.jdt.internal.ui.javaeditor.JavaElementHyperlinkDetector.detectHyperlinks(JavaElementHyperlinkDetector.java:85)
+	at org.eclipse.ui.texteditor.HyperlinkDetectorRegistry$HyperlinkDetectorDelegate.detectHyperlinks(HyperlinkDetectorRegistry.java:81)
+	at org.eclipse.jface.text.hyperlink.HyperlinkManager.findHyperlinks(HyperlinkManager.java:289)
+	at org.eclipse.jface.text.hyperlink.HyperlinkManager.findHyperlinks(HyperlinkManager.java:262)
+	at org.eclipse.jface.text.hyperlink.HyperlinkManager.mouseMove(HyperlinkManager.java:457)
+	at org.eclipse.swt.widgets.TypedListener.handleEvent(TypedListener.java:216)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:89)
+	at org.eclipse.swt.widgets.Display.sendEvent(Display.java:4274)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1066)
+	at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:4072)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3660)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$5.run(PartRenderingEngine.java:1151)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:339)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1042)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:152)
+	at org.eclipse.ui.internal.Workbench.lambda$3(Workbench.java:639)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:339)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:546)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:173)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:152)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:208)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:143)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:109)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:439)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:271)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:651)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:588)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1459)
+	at org.eclipse.equinox.launcher.Main.main(Main.java:1432)
+!SESSION 2024-11-29 11:32:14.559 -----------------------------------------------
+eclipse.buildId=4.31.0.20240307-1200
+java.version=20.0.1
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IE
+Framework arguments:  -product org.eclipse.epp.package.java.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.java.product -data C:\Users\louis\OneDrive - Atlantic TU\Operating System Project\Requester
+
+!ENTRY ch.qos.logback.classic 1 0 2024-11-29 11:32:17.397
+!MESSAGE Activated before the state location was initialized. Retry after the state location is initialized.
+
+!ENTRY ch.qos.logback.classic 1 0 2024-11-29 11:32:18.938
+!MESSAGE Logback config file: C:\Users\louis\OneDrive - Atlantic TU\Operating System Project\Requester\.metadata\.plugins\org.eclipse.m2e.logback\logback.2.6.0.20240217-1525.xml
+
+!ENTRY org.eclipse.egit.ui 2 0 2024-11-29 11:32:26.557
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\louis'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.equinox.p2.director 2 10054 2024-11-29 11:32:40.895
+!MESSAGE Cannot complete the install because of a conflicting dependency.
+!SUBENTRY 1 org.eclipse.equinox.p2.director 4 0 2024-11-29 11:32:40.896
+!MESSAGE Software being installed: artificial_root 1.0.0.v1732879958341
+!SUBENTRY 1 org.eclipse.equinox.p2.director 4 1 2024-11-29 11:32:40.896
+!MESSAGE Only one of the following can be installed at once: 
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2024-11-29 11:32:40.896
+!MESSAGE Mylyn WikiText Help UI 3.0.48.202308291007 (org.eclipse.mylyn.wikitext.help.ui 3.0.48.202308291007)
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2024-11-29 11:32:40.896
+!MESSAGE Mylyn WikiText Help UI 4.2.0.v20240130-0811 (org.eclipse.mylyn.wikitext.help.ui 4.2.0.v20240130-0811)
+!SUBENTRY 1 org.eclipse.equinox.p2.director 4 1 2024-11-29 11:32:40.896
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2024-11-29 11:32:40.896
+!MESSAGE From: artificial_root 1.0.0.v1732879958341
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2024-11-29 11:32:40.896
+!MESSAGE To: org.eclipse.equinox.p2.iu; org.eclipse.mylyn.wikitext.feature.feature.group 4.2.0.v20240302-0923
+!SUBENTRY 1 org.eclipse.equinox.p2.director 4 1 2024-11-29 11:32:40.896
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2024-11-29 11:32:40.896
+!MESSAGE From: artificial_root 1.0.0.v1732879958341
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2024-11-29 11:32:40.896
+!MESSAGE To: org.eclipse.equinox.p2.iu; org.eclipse.mylyn.wikitext_feature.feature.group 0.0.0
+!SUBENTRY 1 org.eclipse.equinox.p2.director 4 1 2024-11-29 11:32:40.896
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2024-11-29 11:32:40.896
+!MESSAGE From: Mylyn WikiText Editors 3.0.48.202308291007 (org.eclipse.mylyn.wikitext.editors_feature.feature.group 3.0.48.202308291007)
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2024-11-29 11:32:40.896
+!MESSAGE To: org.eclipse.equinox.p2.iu; org.eclipse.mylyn.wikitext.help.ui [3.0.48.202308291007,3.0.48.202308291007]
+!SUBENTRY 1 org.eclipse.equinox.p2.director 4 1 2024-11-29 11:32:40.896
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2024-11-29 11:32:40.896
+!MESSAGE From: Mylyn WikiText 4.2.0.v20240302-0923 (org.eclipse.mylyn.wikitext.feature.feature.group 4.2.0.v20240302-0923)
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2024-11-29 11:32:40.896
+!MESSAGE To: org.eclipse.equinox.p2.iu; org.eclipse.mylyn.wikitext.help.ui [4.2.0.v20240130-0811,4.2.0.v20240130-0811]
+!SUBENTRY 1 org.eclipse.equinox.p2.director 4 1 2024-11-29 11:32:40.896
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2024-11-29 11:32:40.896
+!MESSAGE From: Mylyn WikiText 3.0.48.202308291007 (org.eclipse.mylyn.wikitext_feature.feature.group 3.0.48.202308291007)
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2024-11-29 11:32:40.896
+!MESSAGE To: org.eclipse.equinox.p2.iu; org.eclipse.mylyn.wikitext.editors_feature.feature.group [3.0.48.202308291007,3.0.48.202308291007]
+
+!ENTRY org.eclipse.oomph.setup.ui 1 0 2024-11-29 11:32:40.904
+!MESSAGE Setup tasks were performed during startup. See 'C:\Users\louis\eclipse\java-2023-09\eclipse\configuration\org.eclipse.oomph.setup\setup.log' for details
+!SESSION 2024-12-05 11:18:28.428 -----------------------------------------------
+eclipse.buildId=4.31.0.20240307-1200
+java.version=20.0.1
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IE
+Framework arguments:  -product org.eclipse.epp.package.java.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.java.product
+
+!ENTRY ch.qos.logback.classic 1 0 2024-12-05 11:19:09.251
+!MESSAGE Activated before the state location was initialized. Retry after the state location is initialized.
+
+!ENTRY ch.qos.logback.classic 1 0 2024-12-05 11:19:13.943
+!MESSAGE Logback config file: C:\Users\louis\OneDrive - Atlantic TU\Operating System Project\Requester\.metadata\.plugins\org.eclipse.m2e.logback\logback.2.6.0.20240217-1525.xml
+
+!ENTRY org.eclipse.egit.ui 2 0 2024-12-05 11:19:30.073
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\louis'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.equinox.p2.director 2 10054 2024-12-05 11:19:48.757
+!MESSAGE Cannot complete the install because of a conflicting dependency.
+!SUBENTRY 1 org.eclipse.equinox.p2.director 4 0 2024-12-05 11:19:48.757
+!MESSAGE Software being installed: artificial_root 1.0.0.v1733397583854
+!SUBENTRY 1 org.eclipse.equinox.p2.director 4 1 2024-12-05 11:19:48.757
+!MESSAGE Only one of the following can be installed at once: 
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2024-12-05 11:19:48.757
+!MESSAGE Mylyn WikiText Help UI 3.0.48.202308291007 (org.eclipse.mylyn.wikitext.help.ui 3.0.48.202308291007)
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2024-12-05 11:19:48.757
+!MESSAGE Mylyn WikiText Help UI 4.2.0.v20240130-0811 (org.eclipse.mylyn.wikitext.help.ui 4.2.0.v20240130-0811)
+!SUBENTRY 1 org.eclipse.equinox.p2.director 4 1 2024-12-05 11:19:48.757
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2024-12-05 11:19:48.757
+!MESSAGE From: artificial_root 1.0.0.v1733397583854
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2024-12-05 11:19:48.757
+!MESSAGE To: org.eclipse.equinox.p2.iu; org.eclipse.mylyn.wikitext.feature.feature.group 4.2.0.v20240302-0923
+!SUBENTRY 1 org.eclipse.equinox.p2.director 4 1 2024-12-05 11:19:48.757
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2024-12-05 11:19:48.757
+!MESSAGE From: artificial_root 1.0.0.v1733397583854
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2024-12-05 11:19:48.757
+!MESSAGE To: org.eclipse.equinox.p2.iu; org.eclipse.mylyn.wikitext_feature.feature.group 0.0.0
+!SUBENTRY 1 org.eclipse.equinox.p2.director 4 1 2024-12-05 11:19:48.757
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2024-12-05 11:19:48.757
+!MESSAGE From: Mylyn WikiText Editors 3.0.48.202308291007 (org.eclipse.mylyn.wikitext.editors_feature.feature.group 3.0.48.202308291007)
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2024-12-05 11:19:48.757
+!MESSAGE To: org.eclipse.equinox.p2.iu; org.eclipse.mylyn.wikitext.help.ui [3.0.48.202308291007,3.0.48.202308291007]
+!SUBENTRY 1 org.eclipse.equinox.p2.director 4 1 2024-12-05 11:19:48.757
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2024-12-05 11:19:48.757
+!MESSAGE From: Mylyn WikiText 4.2.0.v20240302-0923 (org.eclipse.mylyn.wikitext.feature.feature.group 4.2.0.v20240302-0923)
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2024-12-05 11:19:48.757
+!MESSAGE To: org.eclipse.equinox.p2.iu; org.eclipse.mylyn.wikitext.help.ui [4.2.0.v20240130-0811,4.2.0.v20240130-0811]
+!SUBENTRY 1 org.eclipse.equinox.p2.director 4 1 2024-12-05 11:19:48.757
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2024-12-05 11:19:48.757
+!MESSAGE From: Mylyn WikiText 3.0.48.202308291007 (org.eclipse.mylyn.wikitext_feature.feature.group 3.0.48.202308291007)
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2024-12-05 11:19:48.757
+!MESSAGE To: org.eclipse.equinox.p2.iu; org.eclipse.mylyn.wikitext.editors_feature.feature.group [3.0.48.202308291007,3.0.48.202308291007]
+
+!ENTRY org.eclipse.oomph.setup.ui 1 0 2024-12-05 11:19:48.802
+!MESSAGE Setup tasks were performed during startup. See 'C:\Users\louis\eclipse\java-2023-09\eclipse\configuration\org.eclipse.oomph.setup\setup.log' for details
+!SESSION 2024-12-10 17:27:23.150 -----------------------------------------------
+eclipse.buildId=4.31.0.20240307-1200
+java.version=20.0.1
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IE
+Framework arguments:  -product org.eclipse.epp.package.java.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.java.product
+
+!ENTRY ch.qos.logback.classic 1 0 2024-12-10 17:27:25.962
+!MESSAGE Activated before the state location was initialized. Retry after the state location is initialized.
+
+!ENTRY ch.qos.logback.classic 1 0 2024-12-10 17:27:58.262
+!MESSAGE Logback config file: C:\Users\louis\OneDrive - Atlantic TU\Operating System Project\Requester\.metadata\.plugins\org.eclipse.m2e.logback\logback.2.6.0.20240217-1525.xml
+
+!ENTRY org.eclipse.egit.ui 2 0 2024-12-10 17:28:03.312
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\louis'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.equinox.p2.director 2 10054 2024-12-10 17:28:16.817
+!MESSAGE Cannot complete the install because of a conflicting dependency.
+!SUBENTRY 1 org.eclipse.equinox.p2.director 4 0 2024-12-10 17:28:16.817
+!MESSAGE Software being installed: artificial_root 1.0.0.v1733851694749
+!SUBENTRY 1 org.eclipse.equinox.p2.director 4 1 2024-12-10 17:28:16.817
+!MESSAGE Only one of the following can be installed at once: 
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2024-12-10 17:28:16.817
+!MESSAGE Mylyn WikiText Help UI 3.0.48.202308291007 (org.eclipse.mylyn.wikitext.help.ui 3.0.48.202308291007)
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2024-12-10 17:28:16.817
+!MESSAGE Mylyn WikiText Help UI 4.2.0.v20240130-0811 (org.eclipse.mylyn.wikitext.help.ui 4.2.0.v20240130-0811)
+!SUBENTRY 1 org.eclipse.equinox.p2.director 4 1 2024-12-10 17:28:16.817
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2024-12-10 17:28:16.817
+!MESSAGE From: artificial_root 1.0.0.v1733851694749
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2024-12-10 17:28:16.817
+!MESSAGE To: org.eclipse.equinox.p2.iu; org.eclipse.mylyn.wikitext.feature.feature.group 4.2.0.v20240302-0923
+!SUBENTRY 1 org.eclipse.equinox.p2.director 4 1 2024-12-10 17:28:16.817
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2024-12-10 17:28:16.817
+!MESSAGE From: artificial_root 1.0.0.v1733851694749
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2024-12-10 17:28:16.817
+!MESSAGE To: org.eclipse.equinox.p2.iu; org.eclipse.mylyn.wikitext_feature.feature.group 0.0.0
+!SUBENTRY 1 org.eclipse.equinox.p2.director 4 1 2024-12-10 17:28:16.817
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2024-12-10 17:28:16.817
+!MESSAGE From: Mylyn WikiText Editors 3.0.48.202308291007 (org.eclipse.mylyn.wikitext.editors_feature.feature.group 3.0.48.202308291007)
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2024-12-10 17:28:16.817
+!MESSAGE To: org.eclipse.equinox.p2.iu; org.eclipse.mylyn.wikitext.help.ui [3.0.48.202308291007,3.0.48.202308291007]
+!SUBENTRY 1 org.eclipse.equinox.p2.director 4 1 2024-12-10 17:28:16.817
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2024-12-10 17:28:16.817
+!MESSAGE From: Mylyn WikiText 4.2.0.v20240302-0923 (org.eclipse.mylyn.wikitext.feature.feature.group 4.2.0.v20240302-0923)
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2024-12-10 17:28:16.817
+!MESSAGE To: org.eclipse.equinox.p2.iu; org.eclipse.mylyn.wikitext.help.ui [4.2.0.v20240130-0811,4.2.0.v20240130-0811]
+!SUBENTRY 1 org.eclipse.equinox.p2.director 4 1 2024-12-10 17:28:16.817
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2024-12-10 17:28:16.817
+!MESSAGE From: Mylyn WikiText 3.0.48.202308291007 (org.eclipse.mylyn.wikitext_feature.feature.group 3.0.48.202308291007)
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2024-12-10 17:28:16.817
+!MESSAGE To: org.eclipse.equinox.p2.iu; org.eclipse.mylyn.wikitext.editors_feature.feature.group [3.0.48.202308291007,3.0.48.202308291007]
+
+!ENTRY org.eclipse.oomph.setup.ui 1 0 2024-12-10 17:28:16.826
+!MESSAGE Setup tasks were performed during startup. See 'C:\Users\louis\eclipse\java-2023-09\eclipse\configuration\org.eclipse.oomph.setup\setup.log' for details
+!SESSION 2024-12-11 09:17:44.964 -----------------------------------------------
+eclipse.buildId=4.31.0.20240307-1200
+java.version=20.0.1
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IE
+Framework arguments:  -product org.eclipse.epp.package.java.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.java.product
+
+!ENTRY ch.qos.logback.classic 1 0 2024-12-11 09:17:49.851
+!MESSAGE Activated before the state location was initialized. Retry after the state location is initialized.
+
+!ENTRY ch.qos.logback.classic 1 0 2024-12-11 09:17:51.861
+!MESSAGE Logback config file: C:\Users\louis\OneDrive - Atlantic TU\Operating System Project\Requester\.metadata\.plugins\org.eclipse.m2e.logback\logback.2.6.0.20240217-1525.xml
+
+!ENTRY org.eclipse.egit.ui 2 0 2024-12-11 09:18:02.328
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\louis'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.equinox.p2.director 2 10054 2024-12-11 09:18:21.722
+!MESSAGE Cannot complete the install because of a conflicting dependency.
+!SUBENTRY 1 org.eclipse.equinox.p2.director 4 0 2024-12-11 09:18:21.722
+!MESSAGE Software being installed: artificial_root 1.0.0.v1733908696672
+!SUBENTRY 1 org.eclipse.equinox.p2.director 4 1 2024-12-11 09:18:21.722
+!MESSAGE Only one of the following can be installed at once: 
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2024-12-11 09:18:21.722
+!MESSAGE Mylyn WikiText Help UI 3.0.48.202308291007 (org.eclipse.mylyn.wikitext.help.ui 3.0.48.202308291007)
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2024-12-11 09:18:21.722
+!MESSAGE Mylyn WikiText Help UI 4.2.0.v20240130-0811 (org.eclipse.mylyn.wikitext.help.ui 4.2.0.v20240130-0811)
+!SUBENTRY 1 org.eclipse.equinox.p2.director 4 1 2024-12-11 09:18:21.722
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2024-12-11 09:18:21.723
+!MESSAGE From: artificial_root 1.0.0.v1733908696672
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2024-12-11 09:18:21.723
+!MESSAGE To: org.eclipse.equinox.p2.iu; org.eclipse.mylyn.wikitext.feature.feature.group 4.2.0.v20240302-0923
+!SUBENTRY 1 org.eclipse.equinox.p2.director 4 1 2024-12-11 09:18:21.723
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2024-12-11 09:18:21.723
+!MESSAGE From: artificial_root 1.0.0.v1733908696672
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2024-12-11 09:18:21.723
+!MESSAGE To: org.eclipse.equinox.p2.iu; org.eclipse.mylyn.wikitext_feature.feature.group 0.0.0
+!SUBENTRY 1 org.eclipse.equinox.p2.director 4 1 2024-12-11 09:18:21.723
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2024-12-11 09:18:21.723
+!MESSAGE From: Mylyn WikiText Editors 3.0.48.202308291007 (org.eclipse.mylyn.wikitext.editors_feature.feature.group 3.0.48.202308291007)
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2024-12-11 09:18:21.723
+!MESSAGE To: org.eclipse.equinox.p2.iu; org.eclipse.mylyn.wikitext.help.ui [3.0.48.202308291007,3.0.48.202308291007]
+!SUBENTRY 1 org.eclipse.equinox.p2.director 4 1 2024-12-11 09:18:21.723
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2024-12-11 09:18:21.723
+!MESSAGE From: Mylyn WikiText 4.2.0.v20240302-0923 (org.eclipse.mylyn.wikitext.feature.feature.group 4.2.0.v20240302-0923)
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2024-12-11 09:18:21.725
+!MESSAGE To: org.eclipse.equinox.p2.iu; org.eclipse.mylyn.wikitext.help.ui [4.2.0.v20240130-0811,4.2.0.v20240130-0811]
+!SUBENTRY 1 org.eclipse.equinox.p2.director 4 1 2024-12-11 09:18:21.725
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2024-12-11 09:18:21.726
+!MESSAGE From: Mylyn WikiText 3.0.48.202308291007 (org.eclipse.mylyn.wikitext_feature.feature.group 3.0.48.202308291007)
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2024-12-11 09:18:21.726
+!MESSAGE To: org.eclipse.equinox.p2.iu; org.eclipse.mylyn.wikitext.editors_feature.feature.group [3.0.48.202308291007,3.0.48.202308291007]
+
+!ENTRY org.eclipse.oomph.setup.ui 1 0 2024-12-11 09:18:21.759
+!MESSAGE Setup tasks were performed during startup. See 'C:\Users\louis\eclipse\java-2023-09\eclipse\configuration\org.eclipse.oomph.setup\setup.log' for details
+!SESSION 2024-12-13 11:12:11.638 -----------------------------------------------
+eclipse.buildId=4.31.0.20240307-1200
+java.version=20.0.1
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IE
+Framework arguments:  -product org.eclipse.epp.package.java.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.java.product
+
+!ENTRY ch.qos.logback.classic 1 0 2024-12-13 11:12:15.303
+!MESSAGE Activated before the state location was initialized. Retry after the state location is initialized.
+
+!ENTRY ch.qos.logback.classic 1 0 2024-12-13 11:12:30.051
+!MESSAGE Logback config file: C:\Users\louis\OneDrive - Atlantic TU\Operating System Project\Requester\.metadata\.plugins\org.eclipse.m2e.logback\logback.2.6.0.20240217-1525.xml
+
+!ENTRY org.eclipse.egit.ui 2 0 2024-12-13 11:12:36.020
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\louis'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.equinox.p2.director 2 10054 2024-12-13 11:12:51.221
+!MESSAGE Cannot complete the install because of a conflicting dependency.
+!SUBENTRY 1 org.eclipse.equinox.p2.director 4 0 2024-12-13 11:12:51.222
+!MESSAGE Software being installed: artificial_root 1.0.0.v1734088367602
+!SUBENTRY 1 org.eclipse.equinox.p2.director 4 1 2024-12-13 11:12:51.222
+!MESSAGE Only one of the following can be installed at once: 
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2024-12-13 11:12:51.222
+!MESSAGE Mylyn WikiText Help UI 3.0.48.202308291007 (org.eclipse.mylyn.wikitext.help.ui 3.0.48.202308291007)
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2024-12-13 11:12:51.222
+!MESSAGE Mylyn WikiText Help UI 4.2.0.v20240130-0811 (org.eclipse.mylyn.wikitext.help.ui 4.2.0.v20240130-0811)
+!SUBENTRY 1 org.eclipse.equinox.p2.director 4 1 2024-12-13 11:12:51.222
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2024-12-13 11:12:51.222
+!MESSAGE From: artificial_root 1.0.0.v1734088367602
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2024-12-13 11:12:51.222
+!MESSAGE To: org.eclipse.equinox.p2.iu; org.eclipse.mylyn.wikitext.feature.feature.group 4.2.0.v20240302-0923
+!SUBENTRY 1 org.eclipse.equinox.p2.director 4 1 2024-12-13 11:12:51.222
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2024-12-13 11:12:51.222
+!MESSAGE From: artificial_root 1.0.0.v1734088367602
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2024-12-13 11:12:51.222
+!MESSAGE To: org.eclipse.equinox.p2.iu; org.eclipse.mylyn.wikitext_feature.feature.group 0.0.0
+!SUBENTRY 1 org.eclipse.equinox.p2.director 4 1 2024-12-13 11:12:51.222
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2024-12-13 11:12:51.222
+!MESSAGE From: Mylyn WikiText Editors 3.0.48.202308291007 (org.eclipse.mylyn.wikitext.editors_feature.feature.group 3.0.48.202308291007)
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2024-12-13 11:12:51.222
+!MESSAGE To: org.eclipse.equinox.p2.iu; org.eclipse.mylyn.wikitext.help.ui [3.0.48.202308291007,3.0.48.202308291007]
+!SUBENTRY 1 org.eclipse.equinox.p2.director 4 1 2024-12-13 11:12:51.222
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2024-12-13 11:12:51.222
+!MESSAGE From: Mylyn WikiText 4.2.0.v20240302-0923 (org.eclipse.mylyn.wikitext.feature.feature.group 4.2.0.v20240302-0923)
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2024-12-13 11:12:51.222
+!MESSAGE To: org.eclipse.equinox.p2.iu; org.eclipse.mylyn.wikitext.help.ui [4.2.0.v20240130-0811,4.2.0.v20240130-0811]
+!SUBENTRY 1 org.eclipse.equinox.p2.director 4 1 2024-12-13 11:12:51.222
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2024-12-13 11:12:51.222
+!MESSAGE From: Mylyn WikiText 3.0.48.202308291007 (org.eclipse.mylyn.wikitext_feature.feature.group 3.0.48.202308291007)
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2024-12-13 11:12:51.222
+!MESSAGE To: org.eclipse.equinox.p2.iu; org.eclipse.mylyn.wikitext.editors_feature.feature.group [3.0.48.202308291007,3.0.48.202308291007]
+
+!ENTRY org.eclipse.oomph.setup.ui 1 0 2024-12-13 11:12:51.235
+!MESSAGE Setup tasks were performed during startup. See 'C:\Users\louis\eclipse\java-2023-09\eclipse\configuration\org.eclipse.oomph.setup\setup.log' for details
+!SESSION 2024-12-19 08:59:07.035 -----------------------------------------------
+eclipse.buildId=4.31.0.20240307-1200
+java.version=20.0.1
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IE
+Framework arguments:  -product org.eclipse.epp.package.java.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.java.product
+
+!ENTRY ch.qos.logback.classic 1 0 2024-12-19 08:59:44.850
+!MESSAGE Activated before the state location was initialized. Retry after the state location is initialized.
+
+!ENTRY ch.qos.logback.classic 1 0 2024-12-19 08:59:46.250
+!MESSAGE Logback config file: C:\Users\louis\OneDrive - Atlantic TU\Operating System Project\Requester\.metadata\.plugins\org.eclipse.m2e.logback\logback.2.6.0.20240217-1525.xml
+
+!ENTRY org.eclipse.egit.ui 2 0 2024-12-19 08:59:53.805
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\louis'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.equinox.p2.director 2 10054 2024-12-19 09:00:09.545
+!MESSAGE Cannot complete the install because of a conflicting dependency.
+!SUBENTRY 1 org.eclipse.equinox.p2.director 4 0 2024-12-19 09:00:09.545
+!MESSAGE Software being installed: artificial_root 1.0.0.v1734598807017
+!SUBENTRY 1 org.eclipse.equinox.p2.director 4 1 2024-12-19 09:00:09.545
+!MESSAGE Only one of the following can be installed at once: 
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2024-12-19 09:00:09.545
+!MESSAGE Mylyn WikiText Help UI 3.0.48.202308291007 (org.eclipse.mylyn.wikitext.help.ui 3.0.48.202308291007)
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2024-12-19 09:00:09.545
+!MESSAGE Mylyn WikiText Help UI 4.2.0.v20240130-0811 (org.eclipse.mylyn.wikitext.help.ui 4.2.0.v20240130-0811)
+!SUBENTRY 1 org.eclipse.equinox.p2.director 4 1 2024-12-19 09:00:09.545
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2024-12-19 09:00:09.545
+!MESSAGE From: artificial_root 1.0.0.v1734598807017
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2024-12-19 09:00:09.545
+!MESSAGE To: org.eclipse.equinox.p2.iu; org.eclipse.mylyn.wikitext.feature.feature.group 4.2.0.v20240302-0923
+!SUBENTRY 1 org.eclipse.equinox.p2.director 4 1 2024-12-19 09:00:09.545
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2024-12-19 09:00:09.546
+!MESSAGE From: artificial_root 1.0.0.v1734598807017
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2024-12-19 09:00:09.546
+!MESSAGE To: org.eclipse.equinox.p2.iu; org.eclipse.mylyn.wikitext_feature.feature.group 0.0.0
+!SUBENTRY 1 org.eclipse.equinox.p2.director 4 1 2024-12-19 09:00:09.546
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2024-12-19 09:00:09.546
+!MESSAGE From: Mylyn WikiText Editors 3.0.48.202308291007 (org.eclipse.mylyn.wikitext.editors_feature.feature.group 3.0.48.202308291007)
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2024-12-19 09:00:09.546
+!MESSAGE To: org.eclipse.equinox.p2.iu; org.eclipse.mylyn.wikitext.help.ui [3.0.48.202308291007,3.0.48.202308291007]
+!SUBENTRY 1 org.eclipse.equinox.p2.director 4 1 2024-12-19 09:00:09.546
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2024-12-19 09:00:09.546
+!MESSAGE From: Mylyn WikiText 4.2.0.v20240302-0923 (org.eclipse.mylyn.wikitext.feature.feature.group 4.2.0.v20240302-0923)
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2024-12-19 09:00:09.546
+!MESSAGE To: org.eclipse.equinox.p2.iu; org.eclipse.mylyn.wikitext.help.ui [4.2.0.v20240130-0811,4.2.0.v20240130-0811]
+!SUBENTRY 1 org.eclipse.equinox.p2.director 4 1 2024-12-19 09:00:09.546
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2024-12-19 09:00:09.546
+!MESSAGE From: Mylyn WikiText 3.0.48.202308291007 (org.eclipse.mylyn.wikitext_feature.feature.group 3.0.48.202308291007)
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2024-12-19 09:00:09.546
+!MESSAGE To: org.eclipse.equinox.p2.iu; org.eclipse.mylyn.wikitext.editors_feature.feature.group [3.0.48.202308291007,3.0.48.202308291007]
+
+!ENTRY org.eclipse.oomph.setup.ui 1 0 2024-12-19 09:00:09.555
+!MESSAGE Setup tasks were performed during startup. See 'C:\Users\louis\eclipse\java-2023-09\eclipse\configuration\org.eclipse.oomph.setup\setup.log' for details

@@ -1,0 +1,34 @@
+public class User {
+    private final String name, email, password, departmentName, role;
+    private final int employeeID;
+
+    public User(String name, int employeeID, String email, String password, String departmentName, String role) {
+        this.name = name;
+        this.employeeID = employeeID;
+        this.email = email;
+        this.password = password;
+        this.departmentName = departmentName;
+        this.role = role;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public int getEmployeeID() {
+        return employeeID;
+    }
+
+    @Override
+    public String toString() {
+        return name + "@" + employeeID + "@" + email + "@" + password + "@" + departmentName + "@" + role;
+    }
+}

@@ -1,0 +1,271 @@
+import java.io.*;
+import java.net.*;
+import java.util.*;
+
+public class ServerThread extends Thread {
+	private final Socket connection;
+	private final List<User> users; // shared list of registered users
+	private final List<HealthAndSafetyReports> reports;
+	private ObjectOutputStream out;
+	private ObjectInputStream in;
+
+	public ServerThread(Socket connection, List<User> users, List<HealthAndSafetyReports> reports) {
+		this.connection = connection;
+		this.users = users;
+		this.reports = reports;
+	}
+
+    @Override
+	public void run() {
+		try {
+			// Input and output streams
+			out = new ObjectOutputStream(connection.getOutputStream());
+			out.flush();
+			in = new ObjectInputStream(connection.getInputStream());
+			
+			boolean loggedIn = false;
+			User currentUser = null;
+
+			do {
+				// Welcome message
+				sendMessage("Welcome to the Health and Safety Reporting System\nPlease choose an option\n1. Log-In\n2. Register\n-1. Exit");
+				
+				String choice = (String) in.readObject();
+
+				switch (choice) {
+					// Login
+                case "1":
+                    currentUser = handleLogin();
+                    if (currentUser != null) {
+                    	loggedIn = true;
+                    }
+                    break;
+                    // Register
+                case "2":
+                    handleRegistration();
+                    loggedIn = false;
+                    break;
+                case "-1":
+                    sendMessage("Goodbye!");
+                    return;
+                default:
+                    sendMessage("Invalid choice. Please enter 1, 2, or -1.");
+                    break;
+					}
+				}while (!loggedIn);
+
+			// Menu 2: logged in options
+			while (loggedIn) {
+				sendMessage("\nChoose an option:\n1. Create a Health and Safety Report\n2. Retrieve all Accident Reports\n3. Assign a health & safety Report\n4. View all reports assigned to me\n5. Update password\n6. Exit\n");
+
+				String choice = (String) in.readObject();
+				
+				switch (choice) {
+                case "1":
+                    createHealthAndSafetyReport(currentUser);
+                    break;
+                case "2":
+                    retrieveAccidentReports();
+                    break;
+                case "3":
+                    assignReport();
+                    break;
+                case "4":
+                	viewMyReports(currentUser);
+                    break;
+                case "5":
+                    updatePassword(currentUser);
+                    break;
+                case "6":  //Exit
+                    sendMessage("Goodbye, " + currentUser.getName() + "!");
+                    loggedIn = false;
+                    break;
+                default:
+                    sendMessage("Invalid choice. Please try again.");
+                    break;
+            }
+        }
+    } catch (IOException | ClassNotFoundException e) {
+        e.printStackTrace();
+    } finally {
+		// Closing connection
+        closeConnection();
+    }
+}
+	
+    // Handle Login
+	private User handleLogin() throws IOException, ClassNotFoundException {
+        sendMessage("Enter Email:");
+        String email = (String) in.readObject();
+
+        sendMessage("Enter Password:");
+        String password = (String) in.readObject();
+
+        synchronized (users) {
+            Optional<User> user = users.stream()
+                    .filter(u -> u.getEmail().equals(email) && u.getPassword().equals(password))
+                    .findFirst();
+
+            if (user.isPresent()) {
+                sendMessage("Login successful! Welcome back, " + user.get().getName());
+                return user.get();
+            } else {
+                sendMessage("Invalid Email or Password. Please try again.");
+                return null;
+            }
+        }
+    }
+	
+	// Handle Registration
+	 private void handleRegistration() throws IOException, ClassNotFoundException {
+	        sendMessage("Enter your Name:");
+	        String name = (String) in.readObject();
+
+	        sendMessage("Enter your Employee ID:");
+	        int employeeID = Integer.parseInt((String) in.readObject());
+
+	        sendMessage("Enter your Email:");
+	        String email = (String) in.readObject();
+
+	        sendMessage("Enter your Password:");
+	        String password = (String) in.readObject();
+
+	        sendMessage("Enter your Department Name:");
+	        String departmentName = (String) in.readObject();
+
+	        sendMessage("Enter your Role:");
+	        String role = (String) in.readObject();
+
+	        synchronized (users) {
+	            boolean exists = users.stream()
+	                    .anyMatch(u -> u.getEmail().equals(email) || u.getEmployeeID() == employeeID);
+
+	            if (exists) {
+	                sendMessage("Registration failed: Email or Employee ID already exists.");
+	            } else {
+	                users.add(new User(name, employeeID, email, password, departmentName, role));
+	                sendMessage("Registration successful! Please log in.");
+	            }
+	        }
+	    }
+	 
+	// 1. Create a health and safety report
+    private void createHealthAndSafetyReport(User currentUser) throws IOException, ClassNotFoundException {
+		sendMessage("Enter Report Type (1 for Accident, 2 for Risk):");
+		String reportType = (String) in.readObject();
+	    String type = reportType.equals("1") ? "Accident" : "Risk";
+
+		sendMessage("Enter Report Date (YYYY-MM-DD):");
+		String date = (String) in.readObject();
+
+		String reportID = UUID.randomUUID().toString();
+	    int createdBy = currentUser.getEmployeeID();
+	    String employeeID = String.valueOf(createdBy); // Use the creator's employee ID for the report
+
+	    // Create the new report
+	    HealthAndSafetyReports newReport = new HealthAndSafetyReports(type, date, reportID, employeeID, createdBy);
+
+	    synchronized (reports) {
+	        reports.add(newReport); // Add to in-memory list
+	    }
+
+	    HealthAndSafetyReportsList reportList = new HealthAndSafetyReportsList();
+	    reportList.addReport(type, date, reportID, employeeID, createdBy);
+
+		sendMessage("Report created successfully! Report ID: " + newReport);
+		//sendMessage("Report Creator " + employeeID);
+		//sendMessage("Status: Open");
+		//sendMessage("Assigned Employee: None");
+    }
+		
+		// 2. Retrieve all accident reports
+	    private void retrieveAccidentReports() throws IOException {
+		sendMessage("List of Accident Reports:");
+        synchronized (reports) {
+            boolean hasReports = false;
+            for (HealthAndSafetyReports report : reports) {
+                if ("Accident".equals(report.getType())) {
+                    sendMessage(report.toString());
+                    hasReports = true;
+                }
+            }
+            if (!hasReports) {
+                sendMessage("No accident reports found.");
+            }
+        }
+    }
+
+		// 3. Assign health & safety report (by report ID)
+	    private void assignReport() throws IOException, ClassNotFoundException {
+			
+			sendMessage("Enter the ID of report to assign:");
+			String reportId = (String) in.readObject();
+			
+	        sendMessage("Enter the Employee ID to assign this report:");
+	        int assignTo = Integer.parseInt((String) in.readObject());
+
+	        synchronized (reports) {
+	            for (HealthAndSafetyReports report : reports) {
+	                if (report.getReportID().equals(reportId)) {
+	                    report.setAssignedTo(assignTo);
+	                    report.setStatus("Assigned");
+	                    sendMessage("Report successfully assigned to Employee ID: " + assignTo);
+	                    return;
+	                }
+	            }
+	        }
+	        sendMessage("Report ID not found.");
+	    }
+
+    	// 4. View reports assigned to me
+	    private void viewMyReports(User currentUser) throws IOException {
+	    	sendMessage("List of Reports assigned to you:");
+			synchronized (reports) {
+	            boolean hasReports = false;
+	            for (HealthAndSafetyReports report : reports) {
+	                if (report.getAssignedTo() == currentUser.getEmployeeID()) {
+	                    sendMessage(report.toString());
+	                    hasReports = true;
+	                }
+	            }
+	            if (!hasReports) {
+	                sendMessage("No reports assigned to you.");
+	            }
+	        }
+	    }
+	    
+        // 5. Update Password
+	    private void updatePassword(User currentUser) throws IOException, ClassNotFoundException {
+	        sendMessage("Enter current password:");
+	        String currentPassword = (String) in.readObject();
+
+	        if (currentPassword.equals(currentUser.getPassword())) {
+	            sendMessage("Enter new password:");
+	            String newPassword = (String) in.readObject();
+	            currentUser.setPassword(newPassword);
+	            sendMessage("Password updated successfully.");
+	        } else {
+	            sendMessage("Current password is incorrect.");
+	        }
+	    }
+		
+	private void sendMessage(String msg) {
+		try {
+			out.writeObject(msg);
+			out.flush();
+			System.out.println("server>" + msg);
+		} catch (IOException ioException) {
+			ioException.printStackTrace();
+		}
+	}
+
+	private void closeConnection() {
+		try {
+			in.close();
+			out.close();
+			connection.close();
+		} catch (IOException ioException) {
+			ioException.printStackTrace();
+		}
+	}
+}

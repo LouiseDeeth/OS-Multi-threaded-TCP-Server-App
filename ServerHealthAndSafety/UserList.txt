@@ -1,0 +1,8 @@
+John Smith-123-john@gmail.com-password-Sales-Manager
+Ann Jones-124-ann@gmail.com-password-Reviews-Manager
+Linda Ward-125-linda@gmail.com-password-Inspections-Inspector
+Sue Jenkins-126-Sue@gmail.com-password-Inspections-Inspector
+Mark Slone-127-Mark@gmail.com-password-Safety Records-Admin
+Mary Kearney-128-mary@gmail.com-password-Deliverys-Driver
+2-2-2-555-2-2
+3-3-3-3-3-3
