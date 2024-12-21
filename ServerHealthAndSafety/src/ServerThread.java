@@ -168,50 +168,70 @@ public class ServerThread extends Thread {
 		}
 	}
 
+	public class RandomNumberGenerator {
+	    public static String generate8DigitNumber() {
+	        Random random = new Random();
+	        int randomNumber = 10000000 + random.nextInt(90000000); // Generate number in range 10,000,000 to 99,999,999
+	        return String.valueOf(randomNumber);
+	    }
+	}
+	
 	// Menu 2 Option 1. Create a health and safety report
 	private void createHealthAndSafetyReport(User currentUser) throws IOException, ClassNotFoundException {
-		sendMessage("Enter Report Type (1 for Accident, 2 for Risk):");
-		String reportType = (String) in.readObject();
-		String type = reportType.equals("1") ? "Accident" : "Risk";
+	    if (currentUser == null) {
+	        sendMessage("Error: You must be logged in to create a report.");
+	        return;
+	    }
 
-		sendMessage("Enter Report Date (YYYY-MM-DD):");
-		String date = (String) in.readObject();
+	    // Get report type
+	    sendMessage("\nChoose an option:\n1: Create New Accident Report\n2: Create New Health & Safety Risk Report");
+	    String reportTypeChoice = (String) in.readObject();
+	    String type = reportTypeChoice.equals("1") ? "Accident Report" : "Health & Safety Risk Report";
 
-		String reportID = UUID.randomUUID().toString();
-		int createdBy = currentUser.getEmployeeID();
-		String employeeID = String.valueOf(createdBy); // Use the creator's employee ID for the report
+	    // Get report date
+	    sendMessage("Enter Report Date (YYYY-MM-DD):");
+	    String date = (String) in.readObject();
 
-		// Create the new report
-		HealthAndSafetyReports newReport = new HealthAndSafetyReports(type, date, reportID, employeeID, createdBy);
+	    // Generate unique report ID
+	    String reportID = RandomNumberGenerator.generate8DigitNumber();
 
-		synchronized (reports) {
-			reports.add(newReport); // Add to in-memory list
-		}
+	    // Employee ID of report creator
+	    int createdBy = currentUser.getEmployeeID();
 
-		HealthAndSafetyReportsList reportList = new HealthAndSafetyReportsList();
-		reportList.addReport(type, date, reportID, employeeID, createdBy);
+	    // Default values
+	    String status = "Open";
+	    int assignedTo = 0; // Unassigned initially
 
-		sendMessage("Report created successfully! Report ID: " + newReport);
-		// sendMessage("Report Creator " + employeeID);
-		// sendMessage("Status: Open");
-		// sendMessage("Assigned Employee: None");
+	    // Create a new report
+	    HealthAndSafetyReports newReport = new HealthAndSafetyReports(type, reportID, date, String.valueOf(createdBy), createdBy);
+	    newReport.setStatus(status);
+	    newReport.setAssignedTo(assignedTo);
+
+	    synchronized (reports) {
+	        reports.add(newReport);
+	    }
+
+	    HealthAndSafetyReportsList reportList = new HealthAndSafetyReportsList();
+	    reportList.addReport(type, reportID, date, String.valueOf(createdBy), createdBy);
+
+	    sendMessage("Report created successfully!");
+	    sendMessage("Report Details: " + newReport);
 	}
-
+	
 	// Menu 2 Option 2. Retrieve all accident reports
 	private void retrieveAccidentReports() throws IOException {
-		sendMessage("List of Accident Reports:");
-		synchronized (reports) {
-			boolean hasReports = false;
-			for (HealthAndSafetyReports report : reports) {
-				if ("Accident".equals(report.getType())) {
-					sendMessage(report.toString());
-					hasReports = true;
-				}
-			}
-			if (!hasReports) {
-				sendMessage("No accident reports found.");
-			}
-		}
+	    HealthAndSafetyReportsList reportList = new HealthAndSafetyReportsList();
+	    List<HealthAndSafetyReports> accidentReports = reportList.retrieveAccidentReports();
+
+	    if (accidentReports.isEmpty()) {
+	        sendMessage("No accident reports found.");
+	    } else {
+	        sendMessage("Accident Reports:");
+	        for (HealthAndSafetyReports report : accidentReports) {
+	            sendMessage(report.toString());
+	        }
+	    }
+	    sendMessage("END_OF_REPORTS");
 	}
 
 	// Menu 2 Option 3. Assign health & safety report (by report ID)

@@ -14,7 +14,7 @@ public class UserList {
         try (BufferedReader br = new BufferedReader(new FileReader("UserList.txt"))) {
             String fileContents;
             while ((fileContents = br.readLine()) != null) {
-                String[] parts = fileContents.split("-"); // Using | as delimiter based on User.toString()
+                String[] parts = fileContents.split("-"); // Using - as delimiter based on User.toString()
                 if (parts.length == 6) {
                     String name = parts[0].trim();
                     int employeeID = Integer.parseInt(parts[1].trim());

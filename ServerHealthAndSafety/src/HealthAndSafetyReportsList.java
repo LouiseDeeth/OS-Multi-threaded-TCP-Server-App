@@ -14,14 +14,29 @@ public class HealthAndSafetyReportsList {
         try (BufferedReader br = new BufferedReader(new FileReader("HealthAndSafetyReports.txt"))) {
             String fileContents;
             while ((fileContents = br.readLine()) != null) {
-                String[] parts = fileContents.split("@"); // Assuming @ is used as delimiter
-                if (parts.length >= 5) {
-                    String type = parts[0];
-                    String date = parts[1];
-                    String reportID = parts[2];
-                    String employeeID = parts[3];
-                    int createdBy = Integer.parseInt(parts[4]);
-                    list.add(new HealthAndSafetyReports(type, date, reportID, employeeID, createdBy));
+                System.out.println("DEBUG: Reading line - " + fileContents);
+                String[] parts = fileContents.split("\\|"); // Use | as the delimiter
+                if (parts.length >= 7) { // Ensure all fields are present
+                    try {
+                        String type = parts[0].trim();
+                        String reportID = parts[1].trim();
+                        String date = parts[2].trim();
+                        String employeeID = parts[3].trim();
+                        int createdBy = Integer.parseInt(parts[4].trim());
+                        int assignedTo = Integer.parseInt(parts[5].trim());
+                        String status = parts[6].trim();
+
+                        HealthAndSafetyReports report = new HealthAndSafetyReports(type, reportID, date, employeeID, createdBy);
+                        report.setAssignedTo(assignedTo);
+                        report.setStatus(status);
+
+                        System.out.println("DEBUG: Parsed report - " + report);
+                        list.add(report);
+                    } catch (NumberFormatException e) {
+                        System.err.println("Skipping invalid report line (NumberFormatException): " + fileContents);
+                    }
+                } else {
+                    System.err.println("Skipping incomplete report line: " + fileContents);
                 }
             }
         } catch (FileNotFoundException e) {
@@ -31,16 +46,26 @@ public class HealthAndSafetyReportsList {
         }
     }
 
-    public synchronized void addReport(String type, String date, String reportID, String employeeID, int createdBy) {
-        HealthAndSafetyReports newReport = new HealthAndSafetyReports(type, date, reportID, employeeID, createdBy);
+    public synchronized void addReport(String type, String reportID, String date, String employeeID, int createdBy) {
+        HealthAndSafetyReports newReport = new HealthAndSafetyReports(type, reportID, date, employeeID, createdBy);
         list.add(newReport);
         saveReportsToFile();
     }
 
     private void saveReportsToFile() {
-        try (FileWriter fw = new FileWriter("HealthAndSafetyReports.txt")) {
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter("HealthAndSafetyReports.txt"))) {
             for (HealthAndSafetyReports report : list) {
-                fw.write(report.toString() + "\n");
+                // Use | as the delimiter
+                bw.write(String.join("|",
+                    report.getType(),
+                    report.getReportID(),
+                    report.getDate(),
+                    report.getEmployeeID(),
+                    String.valueOf(report.getCreatedBy()),
+                    String.valueOf(report.getAssignedTo()),
+                    report.getStatus()
+                ));
+                bw.newLine();
             }
             System.out.println("Reports file updated successfully.");
         } catch (IOException e) {
@@ -52,19 +77,15 @@ public class HealthAndSafetyReportsList {
     public synchronized int getLength() {
         return list.size();
     }
-
+    
     public synchronized String getItem(int location) {
         return (location >= 0 && location < list.size()) ? list.get(location).toString() : null;
     }
 
-    public synchronized Optional<HealthAndSafetyReports> findReportByID(String reportID) {
-        return list.stream().filter(report -> report.getReportID().equalsIgnoreCase(reportID)).findFirst();
-    }
-
-    public synchronized List<HealthAndSafetyReports> getReportsByType(String type) {
-        synchronized (list) {
-            return list.stream().filter(report -> report.getType().equalsIgnoreCase(type)).collect(Collectors.toList());
-        }
+    public synchronized List<HealthAndSafetyReports> retrieveAccidentReports() {
+        return list.stream()
+                   .filter(report -> report.getType().trim().equalsIgnoreCase("Accident Report"))
+                   .collect(Collectors.toList());
     }
 
     public synchronized List<HealthAndSafetyReports> getAssignedReports(int employeeID) {
