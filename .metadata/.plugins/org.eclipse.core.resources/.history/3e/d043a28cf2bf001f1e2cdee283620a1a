@@ -71,4 +71,5 @@ public class UserList {
 	public synchronized boolean isEmailOrEmployeeIDExists(String email, int employeeID) {
 		return list.stream().anyMatch(user -> user.getEmail().equals(email) || user.getEmployeeID() == employeeID);
 	}
+
 }

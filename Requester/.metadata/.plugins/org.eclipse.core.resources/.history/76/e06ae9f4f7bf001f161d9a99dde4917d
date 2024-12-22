@@ -69,7 +69,7 @@ public class Client {
 					// Handle logged-in menu options
 					switch (message) {
 					// Creating a Health and Safety Report
-					case "1":
+					case "1": 
 						createHealthAndSafetyReport();
 						break;
 					case "2":
@@ -244,28 +244,25 @@ public class Client {
 		System.out.println(message);
 		String employeeId = input.nextLine();
 		sendMessage(employeeId);
-
-		message = (String) in.readObject();
-		System.out.println(message);
 	}
 
 	// Menu 2 Option 4. View reports assigned to me
 	private void viewMyReports() throws IOException, ClassNotFoundException {
-		System.out.println("Retrieving all reports assigned to you...");
+		 System.out.println("Retrieving all reports assigned to you...");
 
-		while (true) {
-			// Read messages from the server
-			String response = (String) in.readObject();
+		    while (true) {
+		        // Read messages from the server
+		        String response = (String) in.readObject();
 
-			// Break the loop if the server indicates the end of the report list
-			if ("END_OF_REPORTS".equals(response)) {
-				break;
-			}
+		        // Break the loop if the server indicates the end of the report list
+		        if ("END_OF_REPORTS".equals(response)) {
+		            break;
+		        }
 
-			// Display each report line sent by the server
-			System.out.println(response);
-		}
-		System.out.println("Returning to the main menu...");
+		        // Display each report line sent by the server
+		        System.out.println(response);
+		    }
+		    System.out.println("Returning to the main menu...");
 	}
 
 	// Menu 2 Option 5. Update Password

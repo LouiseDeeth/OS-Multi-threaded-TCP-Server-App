@@ -10,7 +10,7 @@ public class MainServer {
 		ServerThread handler;
 		int port = 2004;
 		List<User> users = Collections.synchronizedList(new ArrayList<>()); // Library of Users
-		List<HealthAndSafetyReports> reports = Collections.synchronizedList(new ArrayList<>()); // library of H&S
+		List<HealthAndSafetyReports> reports = Collections.synchronizedList(new ArrayList<>()); // library of H&S																			// Reports
 
 		try {
 			// start the server

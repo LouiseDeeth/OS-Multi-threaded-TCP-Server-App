@@ -69,6 +69,14 @@ public class HealthAndSafetyReportsList {
 		}
 	}
 
+	public synchronized int getLength() {
+		return list.size();
+	}
+
+	public synchronized String getItem(int location) {
+		return (location >= 0 && location < list.size()) ? list.get(location).toString() : null;
+	}
+
 	// Retrieve all Accident Reports
 	public synchronized List<HealthAndSafetyReports> retrieveAccidentReports() {
 		return list.stream().filter(report -> report.getType().trim().equalsIgnoreCase("Accident Report"))
