@@ -2,20 +2,22 @@ import java.io.*;
 import java.util.*;
 
 public class UserList {
-	private final List<User> list;
+	private final List<User> list; // List to store all users
 
+	// Constructor: Initializes the user list and loads data from the file.
 	public UserList() {
 		list = new ArrayList<>();
 		loadUsersFromFile();
-		System.out.println("DEBUG: All users in memory: " + list);
+		//System.out.println("DEBUG: All users in memory: " + list);
 	}
 
 	private void loadUsersFromFile() {
 		try (BufferedReader br = new BufferedReader(new FileReader("UserList.txt"))) {
 			String fileContents;
 			while ((fileContents = br.readLine()) != null) {
-				String[] parts = fileContents.split("-"); // Using - as delimiter based on User.toString()
-				if (parts.length == 6) {
+				// Parse each line to create a User object
+				String[] parts = fileContents.split("-"); // Using - as delimiter 
+				if (parts.length == 6) {// Ensure all fields are present
 					String name = parts[0].trim();
 					int employeeID = Integer.parseInt(parts[1].trim());
 					String email = parts[2].trim();
@@ -38,15 +40,14 @@ public class UserList {
 	}
 
 	public synchronized void updateUserPassword(User updatedUser) {
-		// Update the password in the in-memory list
+		// Find the user by email and update the password
 		for (User user : list) {
 			if (user.getEmail().equals(updatedUser.getEmail())) {
 				user.setPassword(updatedUser.getPassword());
 				break;
 			}
 		}
-		// Save the updated list back to the file
-		saveUsersToFile();
+		saveUsersToFile(); // Save the updated list back to the file
 	}
 
 	private void saveUsersToFile() {
@@ -62,12 +63,12 @@ public class UserList {
 		}
 	}
 
+	// Finds a user by email and password.
 	public synchronized Optional<User> findUserByEmailAndPassword(String email, String password) {
-		return list.stream()
-				.filter(user -> user.getEmail().equalsIgnoreCase(email) && user.getPassword().equals(password))
-				.findFirst();
+		return list.stream().filter(user -> user.getEmail().equalsIgnoreCase(email) && user.getPassword().equals(password)).findFirst();
 	}
 
+	// Checks if a given email or employee ID already exists in the system.
 	public synchronized boolean isEmailOrEmployeeIDExists(String email, int employeeID) {
 		return list.stream().anyMatch(user -> user.getEmail().equals(email) || user.getEmployeeID() == employeeID);
 	}

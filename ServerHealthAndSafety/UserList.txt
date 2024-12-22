@@ -1,8 +1,7 @@
 John Smith-123-john@gmail.com-password-Sales-Manager
 Ann Jones-124-ann@gmail.com-password-Reviews-Manager
 Linda Ward-125-linda@gmail.com-password-Inspections-Inspector
-Sue Jenkins-126-Sue@gmail.com-password1-Inspections-Inspector
-Mark Slone-127-Mark@gmail.com-password-Safety Records-Admin
-Mary Kearney-128-mary@gmail.com-password-Deliveries-Driver
-Calum Connor-129-calum@gmail.com-password1-Sales-Assistant
-1-1-1-1-1-1
+Sue Jenkins-126-Sue@gmail.com-password-Inspections-Inspector
+Mary Kearney-128-mary@gmail.com-password-Safety Records-Admin
+Calum Connor-129-calum@gmail.com-password-Sales-Assistant
+Lisa James-122-lisa@gmail.com-password1-Sales-Assistant

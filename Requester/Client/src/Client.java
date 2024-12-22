@@ -7,9 +7,9 @@ public class Client {
 	ObjectOutputStream out;
 	ObjectInputStream in;
 	String message;
-	int result;
 	Scanner input;
 
+	// Constructor
 	Client() {
 		input = new Scanner(System.in);
 	}
@@ -34,7 +34,7 @@ public class Client {
 				System.out.println(message);
 
 				// Get user input
-				message = input.nextLine().trim(); // Trim spaces
+				message = input.nextLine().trim();
 
 				if (message.isEmpty()) {
 					System.out.println("Invalid choice. Please enter a valid option.");
@@ -69,21 +69,11 @@ public class Client {
 					// Handle logged-in menu options
 					switch (message) {
 					// Creating a Health and Safety Report
-					case "1":
-						createHealthAndSafetyReport();
-						break;
-					case "2":
-						retrieveAccidentReports();
-						break;
-					case "3":
-						assignReport();
-						break;
-					case "4":
-						viewMyReports();
-						break;
-					case "5":
-						updatePassword();
-						break;
+					case "1": createHealthAndSafetyReport(); break;
+                    case "2": retrieveAccidentReports(); break;
+                    case "3": assignReport(); break;
+                    case "4": viewMyReports(); break;
+                    case "5": updatePassword(); break;
 					case "6":
 						System.out.println("Logging out...");
 						loggedIn = false;
@@ -106,6 +96,7 @@ public class Client {
 		}
 	}
 
+    // Send a message to the server
 	void sendMessage(String msg) {
 		try {
 			out.writeObject(msg); // send the message to the server
@@ -140,7 +131,6 @@ public class Client {
 				loggedIn = true;
 			}
 		}
-
 		return loggedIn;
 	}
 
@@ -265,7 +255,7 @@ public class Client {
 			// Display each report line sent by the server
 			System.out.println(response);
 		}
-		System.out.println("Returning to the main menu...");
+		//System.out.println("DEBUG: Returning to the main menu...");
 	}
 
 	// Menu 2 Option 5. Update Password
@@ -289,10 +279,11 @@ public class Client {
 			message = (String) in.readObject();
 			System.out.println(message);
 		} else {
-			System.out.println("Password update failed: " + message);
+			System.out.println("Please try again.");
 		}
 	}
-
+    
+	// Close all connections
 	private void closeConnection() {
 		// Closing connection
 		try {
@@ -306,7 +297,8 @@ public class Client {
 			ioException.printStackTrace();
 		}
 	}
-
+    
+	// Main method to start the client application
 	public static void main(String args[]) {
 		Client client = new Client();
 		client.run();

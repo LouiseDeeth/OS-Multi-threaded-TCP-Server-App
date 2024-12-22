@@ -3,12 +3,13 @@ import java.net.*;
 import java.util.*;
 
 public class ServerThread extends Thread {
-	private final Socket connection;
-	private final List<User> users; // shared list of registered users
-	private final List<HealthAndSafetyReports> reports;
-	private ObjectOutputStream out;
-	private ObjectInputStream in;
+	private final Socket connection; // Client connection socket
+	private final List<User> users; // Shared list of registered users
+	private final List<HealthAndSafetyReports> reports; // Shared list of health and safety reports
+	private ObjectOutputStream out; // Output stream to the client
+	private ObjectInputStream in; // Input stream from the client
 
+	// Constructor: Initialize client connection and shared resources
 	public ServerThread(Socket connection, List<User> users, List<HealthAndSafetyReports> reports) {
 		this.connection = connection;
 		this.users = users;
@@ -23,14 +24,12 @@ public class ServerThread extends Thread {
 			out.flush();
 			in = new ObjectInputStream(connection.getInputStream());
 
-			boolean loggedIn = false;
-			User currentUser = null;
+			boolean loggedIn = false; // Tracks if the user is logged in
+			User currentUser = null; // Holds the current user's data
 
 			do {
 				// Welcome message
-				sendMessage(
-						"*** Welcome to the Health & Safety Reporting System ***\nPlease choose an option\n1. Log-In\n2. Register\n-1. Exit");
-
+				sendMessage("*** Welcome to the Health & Safety Reporting System ***\nPlease choose an option\n1. Log-In\n2. Register\n-1. Exit");
 				String choice = (String) in.readObject();
 
 				switch (choice) {
@@ -56,9 +55,7 @@ public class ServerThread extends Thread {
 
 			// Menu 2: logged in options
 			while (loggedIn) {
-				sendMessage(
-						"\nChoose an option:\n1. Create a Health and Safety Report\n2. Retrieve all Accident Reports\n3. Assign a health & safety Report\n4. View all reports assigned to me\n5. Update password\n6. Exit\n");
-
+				sendMessage("\nChoose an option:\n1. Create a Health and Safety Report\n2. Retrieve all Accident Reports\n3. Assign a health & safety Report\n4. View all reports assigned to me\n5. Update password\n6. Exit\n");
 				String choice = (String) in.readObject();
 
 				switch (choice) {
@@ -203,8 +200,7 @@ public class ServerThread extends Thread {
 		int assignedTo = 0; // Unassigned initially
 
 		// Create a new report
-		HealthAndSafetyReports newReport = new HealthAndSafetyReports(type, reportID, date, String.valueOf(createdBy),
-				createdBy);
+		HealthAndSafetyReports newReport = new HealthAndSafetyReports(type, reportID, date, createdBy);
 		newReport.setStatus(status);
 		newReport.setAssignedTo(assignedTo);
 
@@ -213,7 +209,7 @@ public class ServerThread extends Thread {
 		}
 
 		HealthAndSafetyReportsList reportList = new HealthAndSafetyReportsList();
-		reportList.addReport(type, reportID, date, String.valueOf(createdBy), createdBy);
+		reportList.addReport(type, reportID, date, createdBy);
 
 		sendMessage("Report created successfully!");
 		sendMessage("Report Details: " + newReport);
@@ -307,7 +303,7 @@ public class ServerThread extends Thread {
 
 		// Verify the current password
 		if (!currentPassword.equals(currentUser.getPassword())) {
-			sendMessage("Incorrect current password. Please try again.");
+			sendMessage("Incorrect current password.");
 			return false;
 		}
 
@@ -327,6 +323,7 @@ public class ServerThread extends Thread {
 		return true;
 	}
 
+	// Sends a message to the client
 	private void sendMessage(String msg) {
 		try {
 			out.writeObject(msg);
@@ -336,7 +333,8 @@ public class ServerThread extends Thread {
 			ioException.printStackTrace();
 		}
 	}
-
+	
+	// Closes the connection and releases resources
 	private void closeConnection() {
 		try {
 			in.close();
